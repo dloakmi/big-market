@@ -1,0 +1,15 @@
+24-12-20.17:04:48.467 [main            ] INFO  Application            - Starting Application using Java 17.0.11 on Win20240712 with PID 4796 (D:\stuff\big-market\big-market\big-market-app\target\classes started by MSI in D:\stuff\big-market\big-market)
+24-12-20.17:04:48.469 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+24-12-20.17:04:48.800 [main            ] WARN  ClassPathMapperScanner - No MyBatis mapper was found in '[org.example]' package. Please check your configuration.
+24-12-20.17:04:49.056 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+24-12-20.17:04:49.062 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+24-12-20.17:04:49.062 [main            ] INFO  StandardService        - Starting service [Tomcat]
+24-12-20.17:04:49.063 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+24-12-20.17:04:49.129 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+24-12-20.17:04:49.129 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 636 ms
+24-12-20.17:04:49.432 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+24-12-20.17:04:49.444 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+24-12-20.17:04:49.450 [main            ] INFO  Application            - Started Application in 1.266 seconds (JVM running for 1.576)
+24-12-20.17:05:20.442 [http-nio-8091-exec-1] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+24-12-20.17:05:20.442 [http-nio-8091-exec-1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+24-12-20.17:05:20.442 [http-nio-8091-exec-1] INFO  DispatcherServlet      - Completed initialization in 0 ms
