@@ -23,4 +23,6 @@
         Limit 10
     </select>
 
+    <select id="queryStrategyAwardListByStrategyId" parameterType="java.lang.String">
+
 </mapper>
