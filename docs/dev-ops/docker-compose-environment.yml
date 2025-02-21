@@ -14,7 +14,7 @@ services:
     depends_on:
       - mysql-job-dbdata
     ports:
-      - "13306:3306"
+      - "13306:3306" # docker中的3306映射到主机的13306端口
     volumes:
       - ./mysql/sql:/docker-entrypoint-initdb.d
     healthcheck:
