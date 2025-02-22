@@ -17,7 +17,7 @@ public class ApiTest {
     @Autowired
     private IRedisService redisService;
     @Test
-    public void test() {
+    public void test_redis() {
         RMap<Object, Object> map = redisService.getMap("strategy_id_100001");
         map.put(1,101);
         map.put(2,102);

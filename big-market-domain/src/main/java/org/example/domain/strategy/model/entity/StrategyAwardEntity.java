@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 /**
  * @Author: 机智的赛尔
- * @Description： ****
+ * @Description： 策略奖品（策略配置）的实体
  * @DateTime： 2025/2/21 19:32
  **/
 
