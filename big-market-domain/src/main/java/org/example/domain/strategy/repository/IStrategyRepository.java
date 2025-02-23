@@ -1,10 +1,13 @@
 package org.example.domain.strategy.repository;
 
 import org.example.domain.strategy.model.entity.StrategyAwardEntity;
+import org.example.domain.strategy.model.entity.StrategyEntity;
+import org.example.domain.strategy.model.entity.StrategyRuleEntity;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: 机智的赛尔
@@ -14,12 +17,20 @@ import java.util.List;
 
 public interface IStrategyRepository {
 
+    List<StrategyAwardEntity> queryStrategyAwardList(Long strategyId);
 
-    List<StrategyAwardEntity> queryStrategyAwardlist(Long strategyId);
+    void storeStrategyAwardSearchRateTable(String key, Integer rateRange, Map<Integer, Integer> strategyAwardSearchRateTable);
 
-    void storeStrategyAwardSearchRateTables(Long strategyId, Integer rateRange, HashMap<Integer, Integer> shuffledStrategyAwardSearchRateTable);
+    Integer getStrategyAwardAssemble(String key, Integer rateKey);
 
     int getRateRange(Long strategyId);
 
-    int getStrategyAwardAssemble(Long strategyId, int ratekey);
+    int getRateRange(String key);
+
+    StrategyEntity queryStrategyEntityByStrategyId(Long strategyId);
+
+    StrategyRuleEntity queryStrategyRule(Long strategyId, String ruleModel);
+
 }
+
+

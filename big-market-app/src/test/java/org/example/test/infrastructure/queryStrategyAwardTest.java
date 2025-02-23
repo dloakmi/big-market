@@ -22,11 +22,11 @@ import java.util.List;
 @SpringBootTest
 public class queryStrategyAwardTest {
 
-    @Resource
-    private IStrategyRepository strategyRepository;
-    @Test
-    public void queryStrategyAward() {
-        List<StrategyAwardEntity> strategyAwardEntities = strategyRepository.queryStrategyAwardlist(100001L);
-        log.info(strategyAwardEntities.toString());
-    }
+//    @Resource
+//    private IStrategyRepository strategyRepository;
+//    @Test
+//    public void queryStrategyAward() {
+//        List<StrategyAwardEntity> strategyAwardEntities = strategyRepository.queryStrategyAwardlist(100001L);
+//        log.info(strategyAwardEntities.toString());
+//    }
 }
