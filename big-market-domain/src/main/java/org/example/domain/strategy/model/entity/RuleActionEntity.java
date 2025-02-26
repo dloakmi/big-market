@@ -1,7 +1,7 @@
 package org.example.domain.strategy.model.entity;
 
 import lombok.*;
-import org.example.domain.strategy.model.vo.RuleLogicCheckTypeVO;
+import org.example.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
 
 /**
  * @Author: 机智的赛尔
