@@ -12,7 +12,7 @@ import org.example.domain.strategy.model.entity.RaffleFactorEntity;
 public interface IRaffleStrategy {
 
     /**
-     * @description: 执行抽奖 （哦耶！！！）别急，抽完奖怎么发奖品还是个问题呢
+     * @description: 执行抽奖 （哦耶！！！）
      * @author: 超级机智的赛尔
      * @date: 2025/2/25 19:54
      * @param: raffleFactorEntity 根据抽奖必要的因子 （用户，策略ID）

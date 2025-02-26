@@ -1,9 +1,9 @@
-package org.example.domain.strategy.service.rule.factory;
+package org.example.domain.strategy.service.rule.filter.factory;
 
 
 import org.example.domain.strategy.model.entity.RuleActionEntity;
 import org.example.domain.strategy.service.annotation.LogicStrategy;
-import org.example.domain.strategy.service.rule.ILogicFilter;
+import org.example.domain.strategy.service.rule.filter.ILogicFilter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @Author: 机智的赛尔
- * @Description： 规则工厂
+ * @Description： 规则工厂_过滤器
  * @DateTime： 2025/2/25 10:06
  **/
 
