@@ -6,7 +6,7 @@ package org.example.domain.strategy.service.rule.chain;
  * @DateTime： 2025/2/26 19:40
  **/
 
-public interface ILogicChain {
+public interface ILogicChain extends ILogicChainArmory{
 
 
     /**
@@ -19,7 +19,5 @@ public interface ILogicChain {
      **/
     Integer logic (String userId, Long strategyId);
 
-    ILogicChain appendNext(ILogicChain next);
 
-    ILogicChain next();
 }
