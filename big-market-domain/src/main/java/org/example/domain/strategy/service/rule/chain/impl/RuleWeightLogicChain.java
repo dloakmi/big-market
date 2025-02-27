@@ -50,7 +50,7 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
                 .orElse(null);
 
         // 4.抽奖！（还没发奖）
-        if(null == nextValue){
+        if(null != nextValue){
             Integer awardId = strategyDispatch.getRandomAwardId(strategyId, analyticalValueGroup.get(nextValue));
             log.info("抽奖责任链—权重处理 userId:{} strategyId:{} ruleModel:{} ", userId, strategyId, ruleModel());
             return awardId;
