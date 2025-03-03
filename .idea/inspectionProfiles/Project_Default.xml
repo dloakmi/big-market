@@ -2,7 +2,7 @@
   <profile version="1.0">
     <option name="myName" value="Project Default" />
     <inspection_tool class="JavadocDeclaration" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="ADDITIONAL_TAGS" value="DateTime：,Description：,Author:,Description：策略仓储接口,Return:,param:,date:,author:,description:,date" />
+      <option name="ADDITIONAL_TAGS" value="Author:,Description：,DateTime：" />
     </inspection_tool>
   </profile>
 </component>
