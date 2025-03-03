@@ -1,19 +1,16 @@
-package org.example.domain.strategy.service.raffle;
+package org.example.domain.strategy.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.example.domain.strategy.model.entity.RaffleAwardEntity;
 import org.example.domain.strategy.model.entity.RaffleFactorEntity;
 import org.example.domain.strategy.model.entity.RuleActionEntity;
-import org.example.domain.strategy.model.entity.StrategyEntity;
 import org.example.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
 import org.example.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import org.example.domain.strategy.repository.IStrategyRepository;
-import org.example.domain.strategy.service.IRaffleStrategy;
 import org.example.domain.strategy.service.armory.IStrategyDispatch;
 import org.example.domain.strategy.service.rule.chain.ILogicChain;
 import org.example.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
-import org.example.domain.strategy.service.rule.filter.factory.DefaultLogicFactory;
 import org.example.types.enums.ResponseCode;
 import org.example.types.exception.AppException;
 
@@ -77,16 +74,6 @@ public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
                 .awardId(awardId)
                 .build();
     }
-
-    /**
-     * @description: 执行抽奖前置过滤
-     * @author: 超级机智的赛尔
-     * @date: 2025/2/25 17:51
-     * @param: raffleFactorEntity 抽奖因子实体
-     * @param: logics 抽奖规则集合
-     * @Return: 执行后的订正单
-     **/
-    protected abstract RuleActionEntity<RuleActionEntity.RaffleBeforeEntity> doCheckRaffleBeforeLogic(RaffleFactorEntity raffleFactorEntity, String... logics);
 
     /**
      * @description: 执行抽奖过程中过滤
