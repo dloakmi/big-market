@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * @Author: 机智的赛尔
- * @Description： ****
+ * @Description： 决策树引擎
  * @DateTime： 2025/3/3 21:02
  **/
 
@@ -59,6 +59,16 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
         return strategyAwardData;
     }
 
+
+
+    /**
+     * @description: 决策逻辑算子，找到下一个节点
+     * @author: 超级机智的赛尔
+     * @date: 2025/3/4 14:08
+     * @param: matterValue 规则过滤校验类型值对象
+     * @param: treeNodeLineVOList 规则连线
+     * @Return: 节点key
+     **/
     public String nextNode(String matterValue, List<RuleTreeNodeLineVO> treeNodeLineVOList) {
         if (null == treeNodeLineVOList || treeNodeLineVOList.isEmpty()) return null;
         for (RuleTreeNodeLineVO nodeLine : treeNodeLineVOList) {

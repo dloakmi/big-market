@@ -5,7 +5,7 @@ import lombok.Getter;
 
 /**
  * @Author: 机智的赛尔
- * @Description： ****
+ * @Description： 规则过滤校验类型值对象
  * @DateTime： 2025/2/25 9:38
  **/
 

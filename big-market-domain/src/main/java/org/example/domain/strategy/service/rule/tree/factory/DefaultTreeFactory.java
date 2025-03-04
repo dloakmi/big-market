@@ -33,7 +33,7 @@ public class DefaultTreeFactory {
     }
 
     /**
-     * 决策树个动作实习
+     * 决策树经过一次递归后 -> 递归结果实体
      */
     @Data
     @Builder
@@ -44,11 +44,15 @@ public class DefaultTreeFactory {
         private StrategyAwardData strategyAwardData;
     }
 
+    /**
+     * 返回的奖品信息
+     */
     @Data
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
     public static class StrategyAwardData {
+
         /** 抽奖奖品ID - 内部流转使用 */
         private Integer awardId;
         /** 抽奖奖品规则 */
