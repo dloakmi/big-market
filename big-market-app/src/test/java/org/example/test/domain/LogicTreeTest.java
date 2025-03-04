@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 /**
  * @Author: 机智的赛尔
- * @Description： ****
+ * @Description： 抽奖中责任树测试
  * @DateTime： 2025/3/3 21:08
  **/
 
