@@ -60,6 +60,18 @@ public interface IStrategyRepository {
      * @Return: 树结构信息
      **/
     RuleTreeVO queryRuleTreeVOByTreeId(String treeId);
+
+    /**
+     * @description: 缓存奖品库存
+     * @author: 超级机智的赛尔
+     * @date: 2025/3/5 16:59
+     * @param: cacheKey   key
+     * @param: awardCount 库存值
+     * @Return: void
+     **/
+    void cacheStrategyAwardCount(String cacheKey, Integer awardCount);
+
+    Boolean subtractionAwardStock(String cacheKey);
 }
 
 

@@ -1,5 +1,6 @@
 package org.example.infrastructure.persistent.repository;
 
+import lombok.extern.slf4j.Slf4j;
 import org.example.domain.strategy.model.entity.StrategyAwardEntity;
 import org.example.domain.strategy.model.entity.StrategyEntity;
 import org.example.domain.strategy.model.entity.StrategyRuleEntity;
@@ -23,6 +24,7 @@ import java.util.*;
  * @DateTime： 2025/2/21 19:28
  **/
 
+@Slf4j
 @Repository
 public class StrategyRepository implements IStrategyRepository {
 
@@ -201,6 +203,27 @@ public class StrategyRepository implements IStrategyRepository {
         redisService.setValue(cacheKey, ruleTreeVODB);
         return ruleTreeVODB;
 
+    }
+
+    @Override
+    public void cacheStrategyAwardCount(String cacheKey, Integer awardCount) {
+        Long cacheAwardCount = redisService.getAtomicLong(cacheKey);
+        if(cacheAwardCount != null)return;
+        redisService.setAtomicLong(cacheKey , awardCount);
+    }
+
+    @Override
+    public Boolean subtractionAwardStock(String cacheKey) {
+        long surplus = redisService.decr(cacheKey);
+        if(surplus < 0){
+            redisService.setValue(cacheKey,0);
+        }
+        String lockKey = cacheKey + Constants.UNDERLINE + surplus;
+        Boolean lock = redisService.setNx(lockKey);
+        if(!lock){
+            log.info("库存奖品库存加锁失败 {}",lockKey);
+        }
+        return lock;
     }
 
 }
