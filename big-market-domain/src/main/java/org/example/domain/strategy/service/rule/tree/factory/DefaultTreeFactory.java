@@ -32,26 +32,31 @@ public class DefaultTreeFactory {
         return new DecisionTreeEngine(logicTreeNodeGroup, ruleTreeVO);
     }
 
+
     /**
-     * 决策树经过一次递归后 -> 递归结果实体
-     */
+     * @Author: 机智的赛尔
+     * @Description： 决策树经过一次递归后 -> 递归结果实体
+     * @DateTime： 2025/3/05 20:53
+     **/
     @Data
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
     public static class TreeActionEntity {
         private RuleLogicCheckTypeVO ruleLogicCheckType;
-        private StrategyAwardData strategyAwardData;
+        private StrategyAwardVO strategyAwardVO;
     }
 
     /**
-     * 返回的奖品信息
-     */
+     * @Author: 机智的赛尔
+     * @Description： 决策树_内部流转策略奖品结果
+     * @DateTime： 2025/3/05 20:53
+     **/
     @Data
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class StrategyAwardData {
+    public static class StrategyAwardVO {
 
         /** 抽奖奖品ID - 内部流转使用 */
         private Integer awardId;

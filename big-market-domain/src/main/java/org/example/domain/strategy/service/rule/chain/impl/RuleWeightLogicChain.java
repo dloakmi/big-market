@@ -31,7 +31,7 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
     public Long userScore =  0L;
 
     @Override
-    public DefaultChainFactory.StrategyAwardVo logic(String userId, Long strategyId) {
+    public DefaultChainFactory.StrategyAwardVO logic(String userId, Long strategyId) {
         log.info("规则过滤-权重范围 userId:{} strategyId:{} ruleModel:{}",userId,strategyId,ruleModel());
 
         // 1. 根据用户ID查询用户抽奖消耗的积分值，本章节我们先写死为固定的值。后续需要从数据库中查询。
@@ -54,7 +54,7 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
         if(null != nextValue){
             Integer awardId = strategyDispatch.getRandomAwardId(strategyId, analyticalValueGroup.get(nextValue));
             log.info("抽奖责任链—权重处理 userId:{} strategyId:{} ruleModel:{} ", userId, strategyId, ruleModel());
-            return DefaultChainFactory.StrategyAwardVo.builder()
+            return DefaultChainFactory.StrategyAwardVO.builder()
                     .awardId(awardId)
                     .logicModel(ruleModel())
                     .build();
@@ -66,7 +66,7 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
 
     @Override
     protected String ruleModel() {
-        return "rule_weight";
+        return DefaultChainFactory.LogicModel.RULE_WEIGHT.getCode();
     }
 
     /**

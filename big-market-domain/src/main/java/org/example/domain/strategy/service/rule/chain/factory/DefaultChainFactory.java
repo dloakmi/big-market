@@ -54,11 +54,17 @@ public class DefaultChainFactory {
 
     }
 
+
+    /**
+     * @Author: 机智的赛尔
+     * @Description： 责任链_内部流转策略奖品结果
+     * @DateTime： 2025/3/05 20:53
+     **/
     @Data
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class StrategyAwardVo{
+    public static class StrategyAwardVO{
 
         /** 抽奖奖品ID - 内部流转使用 */
         private Integer awardId;
@@ -68,6 +74,11 @@ public class DefaultChainFactory {
 
 
 
+    /**
+     * @Author: 机智的赛尔
+     * @Description： 责任链_枚举类
+     * @DateTime： 2025/3/05 20:53
+     **/
     @Getter
     @AllArgsConstructor
     public enum LogicModel{

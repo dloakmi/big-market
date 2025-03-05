@@ -38,4 +38,6 @@ public class AwardDaoTest {
         List<StrategyAward> strategyAwards = strategyAwardDao.queryStrategyAwardListByStrategyId(100001L);
         log.info(JSON.toJSONString(strategyAwards));
     }
+
+
 }
