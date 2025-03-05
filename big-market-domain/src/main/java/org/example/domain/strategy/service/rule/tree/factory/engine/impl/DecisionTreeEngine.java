@@ -63,7 +63,7 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
 
 
     /**
-     * @description: 决策逻辑算子，找到下一个节点
+     * @description: 找到下一个节点 -- (logic结果的转化)
      * @author: 超级机智的赛尔
      * @date: 2025/3/4 14:08
      * @param: matterValue 规则过滤校验类型值对象
@@ -80,6 +80,14 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
         throw new RuntimeException("决策树引擎，nextNode 计算失败，未找到可执行节点！");
     }
 
+    /**
+     * @description: 比较工具
+     * @author: 超级机智的赛尔
+     * @date: 2025/3/5 16:16
+     * @param: matterValue 规则过滤校验类型值对象
+     * @param: nodeLine    链路
+     * @Return: 是否是想要的链路
+     **/
     public boolean decisionLogic(String matterValue, RuleTreeNodeLineVO nodeLine) {
         switch (nodeLine.getRuleLimitType()) {
             case EQUAL:
