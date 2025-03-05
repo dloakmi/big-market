@@ -6,8 +6,7 @@ import org.example.domain.strategy.model.entity.RaffleAwardEntity;
 import org.example.domain.strategy.model.entity.RaffleFactorEntity;
 import org.example.domain.strategy.service.IRaffleStrategy;
 import org.example.domain.strategy.service.armory.IStrategyArmory;
-import org.example.domain.strategy.service.rule.filter.impl.RuleLockLogicFilter;
-import org.example.domain.strategy.service.rule.filter.impl.RuleWeightLogicFilter;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,11 +33,7 @@ public class RaffleStrategyTest {
     @Resource
     private IStrategyArmory strategyArmory;
 
-    @Resource
-    private RuleWeightLogicFilter ruleWeightLogicFilter;
 
-    @Resource
-    private RuleLockLogicFilter ruleLockLogicFilter;
 
     @Before
     public void setUp() {
@@ -46,19 +41,15 @@ public class RaffleStrategyTest {
         strategyArmory.assembleLotteryStrategy(100001L);
         strategyArmory.assembleLotteryStrategy(100002L);
         strategyArmory.assembleLotteryStrategy(100003L);
+        strategyArmory.assembleLotteryStrategy(100006L);
 
-        //使用mock来定义用户积分和抽次数
-        //积分影响抽奖策略
-        ReflectionTestUtils.setField(ruleWeightLogicFilter, "userScore", 40500L);
-        //抽奖次数来影响是否解锁
-        ReflectionTestUtils.setField(ruleLockLogicFilter,"userRaffleCount",0L);
     }
 
     @Test
     public void test_performRaffle() {
         RaffleFactorEntity raffleFactorEntity = RaffleFactorEntity.builder()
                 .userId("xiaofuge")
-                .strategyId(100001L)
+                .strategyId(100006L)
                 .build();
 
         RaffleAwardEntity raffleAwardEntity = raffleStrategy.performRaffle(raffleFactorEntity);

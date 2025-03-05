@@ -28,7 +28,13 @@ public interface IStrategyRepository {
     int getRateRange(Long strategyId);
 
     int getRateRange(String key);
-
+    /**
+     * @description: 通过策略ID查询策略信息
+     * @author: 超级机智的赛尔
+     * @date: 2025/3/5 12:43
+     * @param: strategyId 策略ID
+     * @Return: 策略实体信息
+     **/
     StrategyEntity queryStrategyEntityByStrategyId(Long strategyId);
 
     StrategyRuleEntity queryStrategyRule(Long strategyId, String ruleModel);
@@ -36,7 +42,14 @@ public interface IStrategyRepository {
     String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel);
 
     String queryStrategyRuleValue(Long strategyId,  String ruleModel);
-
+    /**
+     * @description: 根据策略ID以及奖品ID获取对应奖品是否还有其他限制
+     * @author: 超级机智的赛尔
+     * @date: 2025/3/5 13:57
+     * @param: strategyId   策略ID
+     * @param: awardId      奖品ID
+     * @Return: 对应奖品的额外限制
+     **/
     StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId);
     
     /**
