@@ -5,6 +5,7 @@ import org.example.domain.strategy.model.entity.StrategyEntity;
 import org.example.domain.strategy.model.entity.StrategyRuleEntity;
 import org.example.domain.strategy.model.valobj.RuleTreeVO;
 import org.example.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
+import org.example.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -32,7 +33,7 @@ public interface IStrategyRepository {
      * @description: 通过策略ID查询策略信息
      * @author: 超级机智的赛尔
      * @date: 2025/3/5 12:43
-     * @param: strategyId 策略ID
+     * @param strategyId 策略ID
      * @Return: 策略实体信息
      **/
     StrategyEntity queryStrategyEntityByStrategyId(Long strategyId);
@@ -41,13 +42,22 @@ public interface IStrategyRepository {
 
     String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel);
 
+    /**
+     * @description: 根据策略ID以及限制方法 -> 限制方法的值
+     * @author: 超级机智的赛尔
+     * @date: 2025/3/6 11:05
+     * @param strategyId 策略ID
+     * @param ruleModel 限制方法名
+     * @Return: 限制方法的值
+     **/
     String queryStrategyRuleValue(Long strategyId,  String ruleModel);
+
     /**
      * @description: 根据策略ID以及奖品ID获取对应奖品是否还有其他限制
      * @author: 超级机智的赛尔
      * @date: 2025/3/5 13:57
-     * @param: strategyId   策略ID
-     * @param: awardId      奖品ID
+     * @param strategyId   策略ID
+     * @param awardId      奖品ID
      * @Return: 对应奖品的额外限制
      **/
     StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId);
@@ -56,7 +66,7 @@ public interface IStrategyRepository {
      * @description: 根据规则树ID，查询树结构信息
      * @author: 超级机智的赛尔
      * @date: 2025/3/4 15:52
-     * @param: treeId 规则树ID
+     * @param treeId 规则树ID
      * @Return: 树结构信息
      **/
     RuleTreeVO queryRuleTreeVOByTreeId(String treeId);
@@ -65,13 +75,32 @@ public interface IStrategyRepository {
      * @description: 缓存奖品库存
      * @author: 超级机智的赛尔
      * @date: 2025/3/5 16:59
-     * @param: cacheKey   key
-     * @param: awardCount 库存值
+     * @param cacheKey   key
+     * @param awardCount 库存值
      * @Return: void
      **/
     void cacheStrategyAwardCount(String cacheKey, Integer awardCount);
 
+    /**
+     * @description: 缓存key，decr方式扣减库存
+     * @author: 超级机智的赛尔
+     * @date: 2025/3/6 11:03
+     * @param cacheKey 缓存key
+     * @Return: 扣减结果
+     **/
     Boolean subtractionAwardStock(String cacheKey);
+
+    void awardStockConsumeSendQueue(StrategyAwardStockKeyVO strategyAwardStockKeyVO);
+
+    /**
+     * @description: 获取队列值
+     * @author: 超级机智的赛尔
+     * @date: 2025/3/6 16:56
+     * @Return: 队列
+     **/
+    StrategyAwardStockKeyVO takeQueueValue();
+
+    void updateStrategyAwardStock(Long strategyId, Integer awardId);
 }
 
 

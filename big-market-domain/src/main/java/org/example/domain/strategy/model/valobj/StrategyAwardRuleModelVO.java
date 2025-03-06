@@ -4,11 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.domain.strategy.service.rule.filter.factory.DefaultLogicFactory;
-import org.example.types.common.Constants;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @Author: 机智的赛尔

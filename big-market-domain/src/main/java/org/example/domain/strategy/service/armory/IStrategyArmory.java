@@ -8,12 +8,14 @@ package org.example.domain.strategy.service.armory;
 
 public interface IStrategyArmory {
 
+
     /**
-     * 装配抽奖策略配置「触发的时机可以为活动审核通过后进行调用」
-     *
+     * @description: 装配抽奖策略配置「触发的时机可以为活动审核通过后进行调用」
+     * @author: 超级机智的赛尔
+     * @date: 2025/3/6 15:17
      * @param strategyId 策略ID
-     * @return 装配结果
-     */
+     * @Return: 装配结果
+     **/
     boolean assembleLotteryStrategy(Long strategyId);
 
 }
