@@ -59,6 +59,7 @@ public class RaffleStrategyTest {
 
     @Test
     public void test_performRaffle() throws InterruptedException {
+
         // 抽奖3次
         for(int i=0; i<3 ;i++){
             RaffleFactorEntity raffleFactorEntity = RaffleFactorEntity.builder()

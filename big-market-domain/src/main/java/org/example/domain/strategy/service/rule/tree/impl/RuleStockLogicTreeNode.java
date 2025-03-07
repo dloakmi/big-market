@@ -50,9 +50,10 @@ public class RuleStockLogicTreeNode implements ILogicTreeNode {
 
         }
 
-
+        //如果库存不足，则直接返回就行
+        log.warn("规则过滤-库存扣减-告警，库存不足。userId:{} strategyId:{} awardId:{}", userId, strategyId, awardId);
         return DefaultTreeFactory.TreeActionEntity.builder()
-                .ruleLogicCheckType(RuleLogicCheckTypeVO.TAKE_OVER)
+                .ruleLogicCheckType(RuleLogicCheckTypeVO.ALLOW)
                 .build();
     }
 
