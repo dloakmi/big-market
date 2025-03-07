@@ -34,7 +34,7 @@
 
     <update id="updateStrategyAwardStock" parameterType="org.example.infrastructure.persistent.po.StrategyAward">
         update strategy_award
-        set award_count_surplus = award_count_surplus -1;
+        set award_count_surplus = award_count_surplus -1
         where strategy_id = #{strategyId} and award_id = #{awardId} and award_count_surplus>0
     </update>
 
