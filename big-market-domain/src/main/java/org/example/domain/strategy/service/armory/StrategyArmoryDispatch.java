@@ -42,8 +42,6 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
 
         }
 
-
-
         // 3.1 默认装配配置【全局】
         assembleLotteryStrategy(String.valueOf(strategyId), strategyAwardEntities);
 
@@ -68,11 +66,6 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
         return true;
     }
 
-    private void cacheStrategyAwardCount(Long strategyId, Integer awardId, Integer awardCount) {
-
-        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_KEY + strategyId + Constants.UNDERLINE + awardId;
-        repository.cacheStrategyAwardCount(cacheKey,awardCount);
-    }
 
     private void assembleLotteryStrategy(String key, List<StrategyAwardEntity> strategyAwardEntities) {
         // 1. 获取最小概率值
@@ -87,7 +80,7 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         // 3. 用 1 % 0.0001 获得概率范围，百分位、千分位、万分位
-        BigDecimal rateRange = totalAwardRate.divide(minAwardRate, 0, RoundingMode.CEILING);
+        BigDecimal rateRange = BigDecimal.valueOf(convert(minAwardRate.doubleValue()));
 
         // 4. 生成策略奖品概率查找表「这里指需要在list集合中，存放上对应的奖品占位即可，占位越多等于概率越高」
         List<Integer> strategyAwardSearchRateTables = new ArrayList<>(rateRange.intValue());
@@ -113,6 +106,35 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
         repository.storeStrategyAwardSearchRateTable(key, shuffleStrategyAwardSearchRateTable.size(), shuffleStrategyAwardSearchRateTable);
     }
 
+
+    /**
+     * 转换计算，只根据小数位来计算。如【0.01返回100】、【0.009返回1000】、【0.0018返回10000】
+     */
+    private double convert(double min) {
+        double current = min;
+        double max = 1;
+        while (current < 1) {
+            current = current * 10;
+            max = max * 10;
+        }
+        return max;
+    }
+
+    /**
+     * @description: 缓存奖品库存到Redis
+     * @author: 超级机智的赛尔
+     * @date: 2025/3/7 15:20
+     * @param strategyId 策略ID
+     * @param awardId    奖品ID
+     * @param awardCount 奖品库存
+     * @Return: void
+     **/
+    private void cacheStrategyAwardCount(Long strategyId, Integer awardId, Integer awardCount) {
+
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_KEY + strategyId + Constants.UNDERLINE + awardId;
+        repository.cacheStrategyAwardCount(cacheKey,awardCount);
+    }
+
     @Override
     public Integer getRandomAwardId(Long strategyId) {
         // 分布式部署下，不一定为当前应用做的策略装配。也就是值不一定会保存到本应用，而是分布式应用，所以需要从 Redis 中获取。
@@ -129,6 +151,7 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
         // 通过生成的随机值，获取概率值奖品查找表的结果
         return repository.getStrategyAwardAssemble(key, new SecureRandom().nextInt(rateRange));
     }
+
 
     @Override
     public Boolean subtractionAwardStock(Long strategyId, Integer awardId) {

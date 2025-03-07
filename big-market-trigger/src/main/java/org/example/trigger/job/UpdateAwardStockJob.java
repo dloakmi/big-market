@@ -21,7 +21,7 @@ public class UpdateAwardStockJob {
     @Resource
     private IRaffleStock raffleStock;
 
-    @Scheduled(cron = "0 */5 * * * *")
+    @Scheduled(cron = "0 */1 * * * *")
     public void exec() {
         try {
 

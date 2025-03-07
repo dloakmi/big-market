@@ -84,9 +84,9 @@ public abstract class AbstractRaffleStrategy implements IRaffleStrategy,IRaffleS
      * @description: 抽奖结果过滤，决策树方法
      * @author: 超级机智的赛尔
      * @date: 2025/3/5 10:20
-     * @param: userId     用户ID
-     * @param: strategyId 策略ID
-     * @param: awardId    奖品ID
+     * @param userId     用户ID
+     * @param strategyId 策略ID
+     * @param awardId    奖品ID
      * @Return: 过滤结果【奖品ID，会根据抽奖次数判断、库存判断、兜底兜里返回最终的可获得奖品信息】
      **/
     public abstract DefaultTreeFactory.StrategyAwardVO raffleLogicTree(String userId , Long strategyId, Integer awardId);
