@@ -21,8 +21,10 @@ import java.util.Map;
 @Slf4j
 public class DecisionTreeEngine implements IDecisionTreeEngine {
 
+    /** 所有的节点 **/
     private final Map<String, ILogicTreeNode> logicTreeNodeGroup;
 
+    /** 规则树真正的地图 **/
     private final RuleTreeVO ruleTreeVO;
 
     public DecisionTreeEngine(Map<String, ILogicTreeNode> logicTreeNodeGroup, RuleTreeVO ruleTreeVO) {
@@ -82,6 +84,7 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
         }
         return null;
         // throw new RuntimeException("决策树引擎，nextNode 计算失败，未找到可执行节点！");
+        // 这边不能返回exception，因为实际上到最后的一个节点就没东西了
     }
 
     /**

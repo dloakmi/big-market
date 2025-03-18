@@ -31,6 +31,8 @@ public class RuleLockLogicTreeNode implements ILogicTreeNode {
             throw new RuntimeException("规则过滤-次数锁异常 ruleValue" + ruleValue + "配置不正确");
         }
 
+        //此处用简单的的taker_over 和 allow 并不符合实际的需求
+
         //用户抽奖次数大于规则限定值，规则放行
         if(userRaffleCount >= raffleCount){
             return DefaultTreeFactory.TreeActionEntity.builder()

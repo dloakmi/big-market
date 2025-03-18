@@ -30,7 +30,7 @@ public class DefaultChainFactory {
      * @description: 开启 过滤方法_责任链
      * @author: 超级机智的赛尔
      * @date: 2025/2/26 21:14
-     * @param: strategyId 策略ID
+     * @param strategyId 策略ID
      * @Return: 一个责任链
      **/
     public ILogicChain openLogicChain(Long strategyId) {
@@ -83,9 +83,11 @@ public class DefaultChainFactory {
     @AllArgsConstructor
     public enum LogicModel{
 
-        RULE_DEFAULT("rule_default","默认抽奖"),
         RULE_BLACKLIST("rule_blacklist","黑名单抽奖"),
         RULE_WEIGHT("rule_weight","权重规则"),
+
+        /** 责任链标准流程的最后一环 **/
+        RULE_DEFAULT("rule_default","默认抽奖"),
         ;
 
         private final String code;

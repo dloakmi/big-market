@@ -25,9 +25,21 @@ public interface IStrategyRepository {
     void storeStrategyAwardSearchRateTable(String key, Integer rateRange, Map<Integer, Integer> strategyAwardSearchRateTable);
 
     Integer getStrategyAwardAssemble(String key, Integer rateKey);
-
+    /**
+     * @description: 获取抽奖的范围，以及检测是否已经前置装配
+     * @author: 超级机智的赛尔
+     * @date: 2025/3/15 13:59
+     * @param strategyId 策略ID
+     * @Return: 抽奖范围
+     **/
     int getRateRange(Long strategyId);
-
+    /**
+     * @description: 获取抽奖的范围，以及检测是否已经前置装配
+     * @author: 超级机智的赛尔
+     * @date: 2025/3/15 13:58
+     * @param key 策略ID
+     * @Return: 抽奖范围
+     **/
     int getRateRange(String key);
     /**
      * @description: 通过策略ID查询策略信息
@@ -63,7 +75,7 @@ public interface IStrategyRepository {
     StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId);
     
     /**
-     * @description: 根据规则树ID，查询树结构信息
+     * @description: 根据规则树ID，查询树结构信息，并构建规则树对象
      * @author: 超级机智的赛尔
      * @date: 2025/3/4 15:52
      * @param treeId 规则树ID
@@ -101,6 +113,8 @@ public interface IStrategyRepository {
     StrategyAwardStockKeyVO takeQueueValue();
 
     void updateStrategyAwardStock(Long strategyId, Integer awardId);
+
+    StrategyAwardEntity queryStrategyAwardEntity(Long strategyId, Integer awardId);
 }
 
 
