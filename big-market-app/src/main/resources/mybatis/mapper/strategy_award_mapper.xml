@@ -23,7 +23,7 @@
         Limit 10
     </select>
     <select id="queryStrategyAwardListByStrategyId" parameterType="java.lang.Long" resultMap="dataMap">
-        SELECT strategy_id,award_id,award_count,award_count_surplus,award_rate
+        SELECT strategy_id,award_id,award_title,award_subtitle,award_count,award_count_surplus,award_rate,sort
         FROM strategy_award
         where strategy_id = #{strategy_id}
     </select>
@@ -37,7 +37,11 @@
         set award_count_surplus = award_count_surplus -1
         where strategy_id = #{strategyId} and award_id = #{awardId} and award_count_surplus>0
     </update>
-
+    <select id="queryStrategyAward" parameterType="org.example.infrastructure.persistent.po.StrategyAward" resultType="org.example.infrastructure.persistent.po.StrategyAward">
+        select strategy_id, award_id, award_title, award_subtitle, award_count, award_count_surplus, award_rate, rule_models, sort
+        from strategy_award
+        where strategy_id = #{strategyId} and award_id = #{awardId}
+    </select>
 
 
 </mapper>
