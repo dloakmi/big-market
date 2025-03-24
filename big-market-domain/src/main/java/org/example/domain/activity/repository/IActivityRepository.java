@@ -12,10 +12,10 @@ import org.example.domain.activity.model.entity.ActivitySkuEntity;
 
 public interface IActivityRepository {
 
-
     ActivitySkuEntity queryActivitySku(Long sku);
 
     ActivityEntity queryRaffleActivityByActivityId(Long activityId);
 
     ActivityCountEntity queryRaffleActivityCountByActivityCountId(Long activityCountId);
+
 }

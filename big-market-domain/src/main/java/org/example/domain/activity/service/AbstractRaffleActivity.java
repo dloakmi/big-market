@@ -2,8 +2,11 @@ package org.example.domain.activity.service;
 
 import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.example.domain.activity.model.entity.*;
 import org.example.domain.activity.repository.IActivityRepository;
+import org.example.types.enums.ResponseCode;
+import org.example.types.exception.AppException;
 
 /**
  * @Author: 机智的赛尔
@@ -12,14 +15,12 @@ import org.example.domain.activity.repository.IActivityRepository;
  **/
 
 @Slf4j
-public abstract class AbstractRaffleActivity implements IRaffleOrder{
+public abstract class AbstractRaffleActivity extends RaffleActivitySupport implements IRaffleOrder{
 
-    protected IActivityRepository activityRepository;
 
     public AbstractRaffleActivity(IActivityRepository activityRepository) {
-        this.activityRepository = activityRepository;
+        super(activityRepository);
     }
-
 
     @Override
     public ActivityOrderEntity createRaffleActivityOrder(ActivityShopCartEntity activityShopCartEntity) {
@@ -34,5 +35,30 @@ public abstract class AbstractRaffleActivity implements IRaffleOrder{
 
         return ActivityOrderEntity.builder().build();
 
+    }
+
+    @Override
+    public String createSkuRechargeOrder(SkuRechargeEntity skuRechargeEntity) {
+        // 1. 参数校验
+        String userId = skuRechargeEntity.getUserId();
+        Long sku = skuRechargeEntity.getSku();
+        String outBusinessNo = skuRechargeEntity.getOutBusinessNo();
+        if(null == sku || StringUtils.isEmpty(userId) || StringUtils.isEmpty(outBusinessNo)) {
+            throw new AppException(ResponseCode.ILLEGAL_PARAMETER.getCode(),ResponseCode.ILLEGAL_PARAMETER.getInfo());
+        }
+
+        // 2. 查询基础信息
+        // 通过sku查询活动信息
+        ActivitySkuEntity activitySkuEntity = queryActivitySku(sku);
+        // 查询活动信息
+        ActivityEntity activityEntity = queryRaffleActivityByActivityId(activitySkuEntity.getActivityId());
+        // 查询次数信息（用户在活动上可参与的次数）
+        ActivityCountEntity activityCountEntity = queryRaffleActivityCountByActivityCountId(activitySkuEntity.getActivityCountId());
+
+        // 3. 活动动作规则校验
+        // 4. 构建订单聚合对象
+        // 5. 保存订单
+        // 6. 返回单号
+        return null;
     }
 }
