@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.util.Date;
-import java.util.Random;
 
 /**
  * @Author: 机智的赛尔

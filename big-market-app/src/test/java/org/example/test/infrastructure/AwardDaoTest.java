@@ -4,7 +4,6 @@ import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.example.infrastructure.persistent.dao.IAwardDao;
 import org.example.infrastructure.persistent.dao.IStrategyAwardDao;
-import org.example.infrastructure.persistent.po.Award;
 import org.example.infrastructure.persistent.po.StrategyAward;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -3,7 +3,9 @@ package org.example.test.infrastructure;
 import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.example.infrastructure.persistent.dao.IRaffleActivityDao;
+import org.example.infrastructure.persistent.dao.IRaffleActivitySkuDao;
 import org.example.infrastructure.persistent.po.RaffleActivity;
+import org.example.infrastructure.persistent.po.RaffleActivitySku;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,10 +27,17 @@ public class RaffleActivityDaotest {
     @Resource
     private IRaffleActivityDao raffleActivityDao;
 
+    @Resource
+    private IRaffleActivitySkuDao raffleActivitySkuDao;
+
     @Test
     public void test_queryRaffleActivityDao() {
-        RaffleActivity raffleActivity = raffleActivityDao.queryRaffleActivityByActivityId(100301L);
-        log.info("测试结果：{}", JSON.toJSONString(raffleActivity));
+//        RaffleActivity raffleActivity = raffleActivityDao.queryRaffleActivityByActivityId(100301L);
+//        log.info("测试结果：{}", JSON.toJSONString(raffleActivity));
+
+        RaffleActivitySku raffleActivitySku = raffleActivitySkuDao.queryActivitySku(9011L);
+        log.info("测试结果：{}", JSON.toJSONString(raffleActivitySku));
+
     }
 
 

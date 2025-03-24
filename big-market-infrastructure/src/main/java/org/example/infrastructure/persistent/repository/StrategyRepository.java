@@ -270,12 +270,16 @@ public class StrategyRepository implements IStrategyRepository {
     @Override
     public StrategyAwardEntity queryStrategyAwardEntity(Long strategyId, Integer awardId) {
 
+        // 优先从缓存获取
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_KEY + strategyId + Constants.UNDERLINE + awardId;
+        StrategyAwardEntity strategyAwardEntity = redisService.getValue(cacheKey);
+        if (null != strategyAwardEntity) return strategyAwardEntity;
         //查询数据
         StrategyAward strategyAwardReq = new StrategyAward();
         strategyAwardReq.setStrategyId(strategyId);
         strategyAwardReq.setAwardId(awardId);
         StrategyAward strategyAwardRes = strategyAwardDao.queryStrategyAward(strategyAwardReq);
-        return StrategyAwardEntity.builder()
+        StrategyAwardEntity awardEntity = StrategyAwardEntity.builder()
                 .strategyId(strategyAwardRes.getStrategyId())
                 .awardId(strategyAwardRes.getAwardId())
                 .awardTitle(strategyAwardRes.getAwardTitle())
@@ -285,6 +289,8 @@ public class StrategyRepository implements IStrategyRepository {
                 .awardRate(strategyAwardRes.getAwardRate())
                 .sort(strategyAwardRes.getSort())
                 .build();
+        redisService.setValue(cacheKey, awardEntity);
+        return awardEntity;
     }
 
 }
