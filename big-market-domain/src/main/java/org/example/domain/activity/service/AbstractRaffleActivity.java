@@ -3,8 +3,11 @@ package org.example.domain.activity.service;
 import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.example.domain.activity.model.aggregate.CreateOrderAggregate;
 import org.example.domain.activity.model.entity.*;
 import org.example.domain.activity.repository.IActivityRepository;
+import org.example.domain.activity.service.rule.IActionChain;
+import org.example.domain.activity.service.rule.factory.DefaultActivityChainFactory;
 import org.example.types.enums.ResponseCode;
 import org.example.types.exception.AppException;
 
@@ -18,8 +21,8 @@ import org.example.types.exception.AppException;
 public abstract class AbstractRaffleActivity extends RaffleActivitySupport implements IRaffleOrder{
 
 
-    public AbstractRaffleActivity(IActivityRepository activityRepository) {
-        super(activityRepository);
+    public AbstractRaffleActivity(IActivityRepository activityRepository, DefaultActivityChainFactory defaultActivityChainFactory) {
+        super(activityRepository, defaultActivityChainFactory);
     }
 
     @Override
@@ -55,10 +58,24 @@ public abstract class AbstractRaffleActivity extends RaffleActivitySupport imple
         // 查询次数信息（用户在活动上可参与的次数）
         ActivityCountEntity activityCountEntity = queryRaffleActivityCountByActivityCountId(activitySkuEntity.getActivityCountId());
 
-        // 3. 活动动作规则校验
+        // 3. 活动动作规则校验 todo 后续处理规则过滤流程，暂时也不处理责任链结果
+        IActionChain actionChain = defaultActivityChainFactory.openActionChain();
+        boolean success = actionChain.action(activitySkuEntity, activityEntity, activityCountEntity);
+
         // 4. 构建订单聚合对象
+        CreateOrderAggregate createOrderAggregate = buildOrderAggregate(skuRechargeEntity,activitySkuEntity,activityEntity,activityCountEntity);
+
         // 5. 保存订单
+        doSaveOrder(createOrderAggregate);
+
         // 6. 返回单号
         return null;
     }
+
+    protected abstract void doSaveOrder(CreateOrderAggregate createOrderAggregate);
+
+    protected abstract CreateOrderAggregate buildOrderAggregate(SkuRechargeEntity skuRechargeEntity, ActivitySkuEntity activitySkuEntity, ActivityEntity activityEntity, ActivityCountEntity activityCountEntity);
+
+
+
 }
