@@ -10,7 +10,7 @@ import org.example.domain.activity.model.entity.ActivitySkuEntity;
  * @DateTime： 2025/3/24 17:16
  **/
 
-public interface IActionChain {
+public interface IActionChain extends IActionChainArmory{
 
     boolean action(ActivitySkuEntity activitySkuEntity, ActivityEntity activityEntity, ActivityCountEntity activityCountEntity);
 

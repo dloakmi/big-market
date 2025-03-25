@@ -22,7 +22,7 @@ public class SkuRechargeEntity {
     private Long sku;
 
     /**
-     * 幂等专业单号，外部谁充值谁透传，这样来保证幂
+     * 幂等专业单号，外部谁充值谁透传，这样来保证幂(防止重复订单)
      **/
     private String outBusinessNo;
 
