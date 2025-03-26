@@ -69,7 +69,7 @@ public abstract class AbstractRaffleActivity extends RaffleActivitySupport imple
         doSaveOrder(createOrderAggregate);
 
         // 6. 返回单号
-        return null;
+        return createOrderAggregate.getActivityOrderEntity().getOrderId();
     }
 
     protected abstract void doSaveOrder(CreateOrderAggregate createOrderAggregate);
