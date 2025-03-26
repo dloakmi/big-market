@@ -158,14 +158,9 @@ public class ActivityRepository implements IActivityRepository {
                 }
             });
 
-
-
         } finally {
             dbRouter.clear();
         }
-
-
-
 
     }
 }

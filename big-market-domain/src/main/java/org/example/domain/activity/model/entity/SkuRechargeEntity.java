@@ -1,5 +1,6 @@
 package org.example.domain.activity.model.entity;
 
+import lombok.Data;
 import lombok.Getter;
 
 /**
@@ -9,6 +10,7 @@ import lombok.Getter;
  **/
 
 @Getter
+@Data
 public class SkuRechargeEntity {
 
     /**
