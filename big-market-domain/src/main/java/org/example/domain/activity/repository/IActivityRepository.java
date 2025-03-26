@@ -20,4 +20,6 @@ public interface IActivityRepository {
     ActivityCountEntity queryRaffleActivityCountByActivityCountId(Long activityCountId);
 
     void doSaveOrder(CreateOrderAggregate createOrderAggregate);
+
+    void cacheActivitySkuStockCount(String cacheKey, Integer stockCount);
 }
