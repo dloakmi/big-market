@@ -2,6 +2,8 @@ package org.example.infrastructure.persistent.redis;
 
 import org.redisson.api.*;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @Author: 机智的赛尔
  * @Description： Redis 服务
@@ -252,4 +254,6 @@ public interface IRedisService {
     void setAtomicLong(String key, Integer value);
 
     Boolean setNx(String key);
+
+    boolean setNx(String key, long expired, TimeUnit timeUnit);
 }

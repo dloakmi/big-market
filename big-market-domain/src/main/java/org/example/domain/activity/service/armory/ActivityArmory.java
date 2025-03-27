@@ -7,6 +7,7 @@ import org.example.types.common.Constants;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 /**
  * @Author: 机智的赛尔
@@ -16,7 +17,7 @@ import javax.annotation.Resource;
 
 @Slf4j
 @Service
-public class ActivityArmory implements IActivityArmory {
+public class ActivityArmory implements IActivityArmory,IActivityDispatch {
 
     @Resource
     private IActivityRepository activityRepository;
@@ -37,5 +38,11 @@ public class ActivityArmory implements IActivityArmory {
         String cacheKey = Constants.RedisKey.ACTIVITY_SKU_STOCK_COUNT_KEY + sku;
         activityRepository.cacheActivitySkuStockCount(cacheKey,stockCount);
 
+    }
+
+    @Override
+    public boolean subtractionActivitySkuStock(Long sku, Date endDateTime) {
+        String cacheKey = Constants.RedisKey.ACTIVITY_SKU_STOCK_COUNT_KEY + sku;
+        return activityRepository.subtractionActivitySkuStock(sku,endDateTime,cacheKey);
     }
 }
