@@ -7,7 +7,9 @@ import org.example.domain.activity.model.entity.ActivityOrderEntity;
 import org.example.domain.activity.model.entity.ActivityShopCartEntity;
 import org.example.domain.activity.model.entity.SkuRechargeEntity;
 import org.example.domain.activity.service.IRaffleOrder;
+import org.example.domain.activity.service.armory.IActivityArmory;
 import org.example.types.exception.AppException;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,6 +31,14 @@ public class RaffleOrderTest {
 
     @Resource
     private IRaffleOrder raffleOrder;
+
+    @Resource
+    private IActivityArmory activityArmory;
+
+    @Before
+    public void init() {
+        log.info("装配活动:{}",activityArmory.assembleActivitySku(9011L));
+    }
 
     @Test
     public void test_createRaffleActivityOrder() {
