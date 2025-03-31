@@ -1,8 +1,4 @@
-package org.example.domain.activity.service.rule;
-
-import org.example.domain.activity.model.entity.ActivityCountEntity;
-import org.example.domain.activity.model.entity.ActivityEntity;
-import org.example.domain.activity.model.entity.ActivitySkuEntity;
+package org.example.domain.activity.service.quota.rule;
 
 /**
  * @Author: 机智的赛尔

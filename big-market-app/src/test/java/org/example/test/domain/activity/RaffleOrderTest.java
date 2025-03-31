@@ -6,7 +6,7 @@ import org.apache.commons.lang.RandomStringUtils;
 import org.example.domain.activity.model.entity.ActivityOrderEntity;
 import org.example.domain.activity.model.entity.ActivityShopCartEntity;
 import org.example.domain.activity.model.entity.SkuRechargeEntity;
-import org.example.domain.activity.service.IRaffleOrder;
+import org.example.domain.activity.service.IRaffleActivityAccountQuotaService;
 import org.example.domain.activity.service.armory.IActivityArmory;
 import org.example.types.exception.AppException;
 import org.junit.Before;
@@ -30,7 +30,7 @@ import java.util.concurrent.CountDownLatch;
 public class RaffleOrderTest {
 
     @Resource
-    private IRaffleOrder raffleOrder;
+    private IRaffleActivityAccountQuotaService raffleOrder;
 
     @Resource
     private IActivityArmory activityArmory;
@@ -40,16 +40,7 @@ public class RaffleOrderTest {
         log.info("装配活动:{}",activityArmory.assembleActivitySku(9011L));
     }
 
-    @Test
-    public void test_createRaffleActivityOrder() {
 
-        ActivityShopCartEntity activityShopCartEntity = new ActivityShopCartEntity();
-        activityShopCartEntity.setUserId("wangshengliang");
-        activityShopCartEntity.setSku(9011L);
-        ActivityOrderEntity raffleActivityOrder = raffleOrder.createRaffleActivityOrder(activityShopCartEntity);
-        log.info("测试结果：{}", JSON.toJSONString(raffleActivityOrder));
-
-    }
 
     /**
      * 测试库存消耗和最终一致更新
@@ -66,7 +57,7 @@ public class RaffleOrderTest {
                 skuRechargeEntity.setSku(9011L);
                 // outBusinessNo 作为幂等仿重使用，同一个业务单号2次使用会抛出索引冲突 Duplicate entry '700091009111' for key 'uq_out_business_no' 确保唯一性。
                 skuRechargeEntity.setOutBusinessNo(RandomStringUtils.randomNumeric(12));
-                String orderId = raffleOrder.createSkuRechargeOrder(skuRechargeEntity);
+                String orderId = raffleOrder.createOrder(skuRechargeEntity);
                 log.info("测试结果：{}", orderId);
             } catch (AppException e) {
                 log.warn(e.getInfo());

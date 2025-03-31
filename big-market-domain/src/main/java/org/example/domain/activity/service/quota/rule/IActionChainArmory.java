@@ -1,4 +1,4 @@
-package org.example.domain.activity.service.rule;
+package org.example.domain.activity.service.quota.rule;
 
 /**
  * @Author: 机智的赛尔
