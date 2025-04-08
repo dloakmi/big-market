@@ -7,17 +7,19 @@ import org.example.domain.activity.model.valobj.UserRaffleOrderStateVO;
 import org.example.domain.activity.repository.IActivityRepository;
 import org.example.types.enums.ResponseCode;
 import org.example.types.exception.AppException;
+import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * @Author: 机智的赛尔
- * @Description： ****
+ * @Description： 抽奖活动参与抽奖类
  * @DateTime： 2025/3/31 17:33
  **/
 
-public class RaffleActivityPartakeService extends AbstractRaffleActivityPartakeService{
+@Service
+public class RaffleActivityPartakeService extends AbstractRaffleActivityPartakeService {
 
     private final SimpleDateFormat dateFormatMonth = new SimpleDateFormat("yyyy-MM");
     private final SimpleDateFormat dateFormatDay = new SimpleDateFormat("yyyy-MM-dd");
@@ -101,3 +103,4 @@ public class RaffleActivityPartakeService extends AbstractRaffleActivityPartakeS
         return userRaffleOrder;
 
     }
+}
