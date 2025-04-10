@@ -1,5 +1,7 @@
 package org.example.infrastructure.persistent.po;
 
+import lombok.Data;
+
 import java.util.Date;
 
 /**
@@ -8,6 +10,7 @@ import java.util.Date;
  * @DateTime： 2025/3/28 17:55
  **/
 
+@Data
 public class UserAwardRecord {
 
     /** 自增ID */
