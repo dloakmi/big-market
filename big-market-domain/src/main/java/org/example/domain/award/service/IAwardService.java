@@ -1,5 +1,7 @@
 package org.example.domain.award.service;
 
+import org.example.domain.award.model.entity.UserAwardRecordEntity;
+
 /**
  * @Author: 机智的赛尔
  * @Description： 奖品服务接口
@@ -8,6 +10,6 @@ package org.example.domain.award.service;
 
 public interface IAwardService {
 
-    void saveUserAwardRecord();
+    void saveUserAwardRecord(UserAwardRecordEntity userAwardRecordEntity);
 
 }

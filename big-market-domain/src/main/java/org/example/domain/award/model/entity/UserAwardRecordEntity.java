@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.domain.award.model.valobj.AwardStateVO;
 
 import java.util.Date;
 
@@ -35,7 +36,7 @@ public class UserAwardRecordEntity {
     /** 中奖时间 */
     private Date awardTime;
     /** 奖品状态；create-创建、completed-发奖完成 */
-    private String awardState;
+    private AwardStateVO awardState;
 
 
 }
