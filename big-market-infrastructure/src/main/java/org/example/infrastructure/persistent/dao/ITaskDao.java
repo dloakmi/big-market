@@ -1,5 +1,6 @@
 package org.example.infrastructure.persistent.dao;
 
+import cn.bugstack.middleware.db.router.annotation.DBRouter;
 import org.apache.ibatis.annotations.Mapper;
 import org.example.infrastructure.persistent.po.Task;
 
@@ -16,8 +17,10 @@ public interface ITaskDao {
 
     void insert(Task task);
 
+    @DBRouter
     void updateTaskSendMessageCompleted(Task task);
 
+    @DBRouter
     void updateTaskSendMessageFail(Task task);
 
     List<Task> queryNoSendMessageTaskList();

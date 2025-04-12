@@ -7,6 +7,7 @@ import org.example.domain.award.model.entity.UserAwardRecordEntity;
 import org.example.domain.award.model.valobj.TaskStateVO;
 import org.example.domain.award.repository.IAwardRepository;
 import org.example.types.event.BaseEvent;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
@@ -17,6 +18,7 @@ import javax.annotation.Resource;
  * @DateTime： 2025/4/9 16:54
  **/
 
+@Service
 public class AwardService implements IAwardService {
 
     @Resource
