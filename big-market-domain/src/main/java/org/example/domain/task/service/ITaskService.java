@@ -18,6 +18,7 @@ public interface ITaskService {
 
     void sendMessage(TaskEntity taskEntity);
 
+
     void updateTaskSendMessageCompleted(String userId , String MessageId);
 
     void updateTaskSendMessageFail(String userId , String MessageId);
