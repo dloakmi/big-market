@@ -10,6 +10,16 @@ public interface IStrategyArmory {
 
 
     /**
+     * @description: 装配抽奖策略配置【触发的时机可以是活动审核通过后进行调用】
+     * @author: 超级机智的赛尔
+     * @date: 2025/4/12 17:31
+     * @param activityId 活动ID
+     * @Return: 装配结果
+     **/
+    boolean assembleLotteryStrategyByActivityId(Long activityId);
+
+
+    /**
      * @description: 装配抽奖策略配置「触发的时机可以为活动审核通过后进行调用」
      * @author: 超级机智的赛尔
      * @date: 2025/3/6 15:17
