@@ -2064,3 +2064,30 @@ Caused by: java.lang.ClassNotFoundException: Cannot find class: dataMap
 25-04-14.17:23:38.577 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
 25-04-14.17:23:38.894 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
 25-04-14.17:23:38.895 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-14.17:29:04.676 [main            ] INFO  Application            - Starting Application using Java 1.8.0_391 on joe with PID 64948 (D:\java_study_foundation\big-market\big-market-app\target\classes started by 12789 in D:\java_study_foundation\big-market)
+25-04-14.17:29:04.681 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-04-14.17:29:05.912 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-04-14.17:29:05.915 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-04-14.17:29:06.010 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 76 ms. Found 0 Redis repository interfaces.
+25-04-14.17:29:06.894 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-04-14.17:29:06.905 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-04-14.17:29:06.905 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-04-14.17:29:06.905 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-04-14.17:29:07.169 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-04-14.17:29:07.169 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2425 ms
+25-04-14.17:29:07.484 [main            ] INFO  Version                - Redisson 3.23.4
+25-04-14.17:29:08.095 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for localhost/127.0.0.1:16379
+25-04-14.17:29:08.124 [redisson-netty-2-14] INFO  MasterConnectionPool   - 5 connections initialized for localhost/127.0.0.1:16379
+25-04-14.17:29:10.377 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-04-14.17:29:10.496 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-04-14.17:29:10.513 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-04-14.17:29:10.516 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [127.0.0.1:5672]
+25-04-14.17:29:10.558 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#6f50d55c:0/SimpleConnection@7ba1cdbe [delegate=amqp://admin@127.0.0.1:5672/, localPort= 58507]
+25-04-14.17:29:10.654 [main            ] INFO  Application            - Started Application in 6.477 seconds (JVM running for 7.573)
+25-04-14.17:29:10.979 [RMI TCP Connection(1)-192.168.123.222] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-04-14.17:29:10.979 [RMI TCP Connection(1)-192.168.123.222] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-04-14.17:29:10.981 [RMI TCP Connection(1)-192.168.123.222] INFO  DispatcherServlet      - Completed initialization in 2 ms
+25-04-14.17:29:11.333 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-14.17:29:11.592 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-14.17:29:11.611 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-14.17:29:11.645 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Start completed.

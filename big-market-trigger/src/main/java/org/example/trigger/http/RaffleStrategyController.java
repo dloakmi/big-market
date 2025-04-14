@@ -2,6 +2,7 @@ package org.example.trigger.http;
 
 import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.example.domain.strategy.model.entity.RaffleAwardEntity;
 import org.example.domain.strategy.model.entity.RaffleFactorEntity;
 import org.example.domain.strategy.model.entity.StrategyAwardEntity;
@@ -85,7 +86,17 @@ public class RaffleStrategyController implements IRaffleStrategyService {
     @Override
     public Response<List<RaffleAwardListResponseDTO>> queryRaffleAwardList(@RequestBody RaffleAwardListRequestDTO requestDTO) {
         try {
+
             log.info("查询抽奖奖品列表配开始 strategyId：{}", requestDTO.getStrategyId());
+
+            // 参数校验
+            if(StringUtils.isBlank(requestDTO.getUserId()) || requestDTO.getActivityId() == null){
+                return Response.<List<RaffleAwardListResponseDTO>>builder()
+                        .code(ResponseCode.UN_ERROR.getCode())
+                        .info(ResponseCode.UN_ERROR.getInfo())
+                        .build();
+            }
+
             // 查询奖品配置
             List<StrategyAwardEntity> strategyAwardEntities = raffleAward.queryRaffleStrategyAwardList(requestDTO.getStrategyId());
             List<RaffleAwardListResponseDTO> raffleAwardListResponseDTOS = new ArrayList<>(strategyAwardEntities.size());
