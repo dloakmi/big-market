@@ -4,8 +4,10 @@ import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.example.infrastructure.persistent.dao.IRaffleActivityDao;
 import org.example.infrastructure.persistent.dao.IRaffleActivitySkuDao;
+import org.example.infrastructure.persistent.dao.IStrategyAwardDao;
 import org.example.infrastructure.persistent.po.RaffleActivity;
 import org.example.infrastructure.persistent.po.RaffleActivitySku;
+import org.example.infrastructure.persistent.po.StrategyAward;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +30,9 @@ public class RaffleActivityDaotest {
     private IRaffleActivityDao raffleActivityDao;
 
     @Resource
+    private IStrategyAwardDao strategyAwardDao;
+
+    @Resource
     private IRaffleActivitySkuDao raffleActivitySkuDao;
 
     @Test
@@ -37,6 +42,18 @@ public class RaffleActivityDaotest {
 
         RaffleActivitySku raffleActivitySku = raffleActivitySkuDao.queryActivitySku(9011L);
         log.info("测试结果：{}", JSON.toJSONString(raffleActivitySku));
+
+    }
+
+    @Test
+    public void test_queryRaffleActivitySkuDao() {
+
+
+        StrategyAward strategyAwardReq = new StrategyAward();
+        strategyAwardReq.setStrategyId(100006L);
+        strategyAwardReq.setAwardId(103);
+        StrategyAward strategyAwardRes = strategyAwardDao.queryStrategyAward(strategyAwardReq);
+        log.info(strategyAwardRes.toString());
 
     }
 

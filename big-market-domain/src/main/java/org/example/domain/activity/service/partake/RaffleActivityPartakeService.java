@@ -103,4 +103,13 @@ public class RaffleActivityPartakeService extends AbstractRaffleActivityPartakeS
         return userRaffleOrder;
 
     }
+
+    @Override
+    public UserRaffleOrderEntity createOrder(String userId, Long activityId) {
+        PartakeRaffleActivityEntity partakeRaffleActivityEntity = PartakeRaffleActivityEntity.builder()
+                .activityId(activityId)
+                .userId(userId)
+                .build();
+        return createOrder(partakeRaffleActivityEntity);
+    }
 }
