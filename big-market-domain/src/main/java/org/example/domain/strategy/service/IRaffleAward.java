@@ -22,5 +22,13 @@ public interface IRaffleAward {
      **/
     List<StrategyAwardEntity> queryRaffleStrategyAwardList(long strategyId);
 
+    /**
+     * @description: 根据策略ID查询抽奖奖品列表配置
+     * @author: 超级机智的赛尔
+     * @date: 2025/4/15 9:13
+     * @param activityId 活动ID
+     * @Return: 奖品列表
+     **/
+    List<StrategyAwardEntity> queryRaffleStrategyAwardListByActivityId(long activityId);
 
 }

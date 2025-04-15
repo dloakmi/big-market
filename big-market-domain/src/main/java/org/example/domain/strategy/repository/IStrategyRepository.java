@@ -8,6 +8,7 @@ import org.example.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import org.example.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -144,6 +145,16 @@ public interface IStrategyRepository {
     Boolean subtractionAwardStock(String cacheKey);
 
     /**
+     * @description: 缓存key，decr方式扣减库存
+     * @author: 超级机智的赛尔
+     * @date: 2025/3/6 11:03
+     * @param cacheKey 缓存key
+     * @param endDateTime 活动结束时间
+     * @Return: 扣减结果
+     **/
+    Boolean subtractionAwardStock(String cacheKey, Date endDateTime);
+
+    /**
      * @description: 讲奖品消耗加入消耗队列（加锁队列+延迟队列）
      * @author: 超级机智的赛尔
      * @date: 2025/3/24 12:33
@@ -183,6 +194,8 @@ public interface IStrategyRepository {
     Long queryStrategyIdByActivityId(Long activityId);
 
     Integer queryTodayUserRaffleCount(String userId, Long strategyId);
+
+    Map<String, Integer> queryAwardRuleLockAction(String[] treeIds);
 }
 
 
