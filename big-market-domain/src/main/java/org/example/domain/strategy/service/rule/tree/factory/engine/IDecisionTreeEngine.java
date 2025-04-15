@@ -2,6 +2,8 @@ package org.example.domain.strategy.service.rule.tree.factory.engine;
 
 import org.example.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
 
+import java.util.Date;
+
 /**
  * @Author: 机智的赛尔
  * @Description： 规则树组合接口
@@ -19,7 +21,7 @@ public interface IDecisionTreeEngine {
      * @param awardId 奖品ID
      * @Return: 策略树流转过程中结果
      **/
-    DefaultTreeFactory.StrategyAwardVO process(String userId, Long strategyId, Integer awardId);
+    DefaultTreeFactory.StrategyAwardVO process(String userId, Long strategyId, Integer awardId , Date endDateTime);
 
 }
 

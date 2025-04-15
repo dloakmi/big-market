@@ -1,5 +1,7 @@
 package org.example.domain.strategy.service.armory;
 
+import java.util.Date;
+
 /**
  * @author MSI
  * @date 2025/2/23 18:56
@@ -38,5 +40,14 @@ public interface IStrategyDispatch {
      **/
     Boolean subtractionAwardStock(Long strategyId , Integer awardId);
 
+    /**
+     * @description: 根据策略ID和奖品ID，扣减奖品缓存库存
+     * @author: 超级机智的赛尔
+     * @date: 2025/3/6 11:02
+     * @param strategyId 策略ID
+     * @param awardId    奖品ID
+     * @Return:  扣减结果
+     **/
+    Boolean subtractionAwardStock(Long strategyId , Integer awardId, Date endDateTime);
 
 }
