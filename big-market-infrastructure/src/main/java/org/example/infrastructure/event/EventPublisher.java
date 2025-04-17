@@ -29,9 +29,7 @@ public class EventPublisher {
         } catch (Exception e){
             log.error("发送MQ消息失败 topic:{}, message:{}", topic, JSON.toJSONString(eventMessage),e);
             throw e;
-
         }
-
     }
 
     public void publish(String topic, String eventMessageJSON){

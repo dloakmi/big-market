@@ -10,6 +10,13 @@ import java.util.Map;
 
 public interface IRaffleRule {
 
+    /**
+     * @description: 查询奖品限制次数 例： A奖品 - 抽三次解锁
+     * @author: 超级机智的赛尔
+     * @date: 2025/4/17 10:46
+     * @param treeIds 奖品列表
+     * @Return: 奖品列表对应的限制hashmap
+     **/
     Map<String,Integer> queryAwardRuleLockAction(String[] treeIds);
 
 }
