@@ -22,6 +22,7 @@
         select tree_id, rule_value
         from rule_tree_node
         where rule_key = 'rule_lock' and tree_id in
+        <!-- 表示tree_ids必须在下面的集合之中 -->
         <foreach item="treeId" index="index" collection="array" open="(" separator="," close=")">
             #{treeId}
         </foreach>

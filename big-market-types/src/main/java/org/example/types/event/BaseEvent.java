@@ -16,7 +16,7 @@ import java.util.Date;
 @Data
 public abstract class BaseEvent<T> {
 
-    public abstract EventMessage<T> buildEventMessage(T sku);
+    public abstract EventMessage<T> buildEventMessage(T data);
 
     public abstract String topic();
 

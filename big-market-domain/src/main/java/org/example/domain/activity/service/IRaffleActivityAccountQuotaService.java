@@ -21,11 +21,18 @@ public interface IRaffleActivityAccountQuotaService {
      *
      * @author: 超级机智的赛尔
      * @date: 2025/3/24 14:32
-     * @param skuRechargeEntity 活动商品充值实体对象
+     * @param skuRechargeEntity 活动商品sku充值实体对象
      * @Return: 活动ID
      **/
     String createOrder(SkuRechargeEntity skuRechargeEntity);
 
-
+    /**
+     * @description: 查询活动的某sku 在某天的剩余量
+     * @author: 超级机智的赛尔
+     * @date: 2025/4/17 10:57
+     * @param activityId 活动ID
+     * @param userId 用户ID
+     * @Return: 剩余量
+     **/
     Integer queryRaffleActivityAccountDayPartakeCount(Long activityId, String userId);
 }
