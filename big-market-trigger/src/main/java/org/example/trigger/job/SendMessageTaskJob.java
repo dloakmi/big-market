@@ -34,6 +34,7 @@ public class SendMessageTaskJob {
 
     @Scheduled(cron = "0/5 * * * * ?")
     public void exec(){
+
         try{
             // 获取分库数量
             int dbCount = dbRouter.dbCount();

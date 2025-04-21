@@ -47,6 +47,7 @@ public class BehaviorRebateService implements IBehaviorRebateService {
             // 拼装业务ID; 用户ID_返利类型_外部透彻业务ID
             String bizId = behaviorEntity.getUserId() + Constants.UNDERLINE + dailyBehaviorRebateVO.getRebateType() + Constants.UNDERLINE + behaviorEntity.getOutBusinessNo();
 
+            // 流水对象
             BehaviorRebateOrderEntity behaviorRebateOrderEntity = BehaviorRebateOrderEntity.builder()
                     .userId(behaviorEntity.getUserId())
                     .orderId(RandomStringUtils.randomNumeric(12))
