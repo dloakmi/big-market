@@ -95,6 +95,30 @@ public class BehaviorRebateRepository implements IBehaviorRebateRepository {
         }finally {
             dbRouter.clear();
         }
+
+        // 先立马更新了再说
+        for (BehaviorRebateAggregate behaviorRebateAggregate : behaviorRebateAggregates){
+            // 任务对象
+            TaskEntity taskEntity = behaviorRebateAggregate.getTaskEntity();
+            Task task = new Task();
+            task.setUserId(taskEntity.getUserId());
+            task.setTopic(taskEntity.getTopic());
+            task.setMessageId(taskEntity.getMessageId());
+            task.setMessage(JSON.toJSONString(taskEntity.getMessage()));
+            task.setState(taskEntity.getState().getCode());
+
+            // 循环更新task发送mq
+            try{
+                // 发送消息【在事务外执行，如果失败还有任务补偿】
+                eventPublisher.publish(task.getTopic(),task.getMessage());
+                // 更新数据库记录，task任务表
+                taskDao.updateTaskSendMessageCompleted(task);
+            }catch (Exception e){
+                log.error("写入中奖记录，发送MQ消息失败 userId:{} topic:{}",userId,task.getTopic());
+                taskDao.updateTaskSendMessageFail(task);
+            }
+        }
+
     }
 
     @Override

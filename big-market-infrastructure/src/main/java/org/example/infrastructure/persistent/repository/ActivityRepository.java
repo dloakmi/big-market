@@ -148,7 +148,7 @@ public class ActivityRepository implements IActivityRepository {
         raffleActivityOrder.setState(activityOrderEntity.getState().getCode());
         raffleActivityOrder.setOutBusinessNo(activityOrderEntity.getOutBusinessNo());
 
-        // 账户对象
+        // 总账户对象
         RaffleActivityAccount raffleActivityAccount = new RaffleActivityAccount();
         raffleActivityAccount.setUserId(activityOrderEntity.getUserId());
         raffleActivityAccount.setActivityId(activityOrderEntity.getActivityId());
@@ -158,6 +158,22 @@ public class ActivityRepository implements IActivityRepository {
         raffleActivityAccount.setDayCountSurplus(activityOrderEntity.getDayCount());
         raffleActivityAccount.setMonthCount(activityOrderEntity.getMonthCount());
         raffleActivityAccount.setMonthCountSurplus(activityOrderEntity.getMonthCount());
+
+        // 账户对象 - 月
+        RaffleActivityAccountMonth raffleActivityAccountMonth = new RaffleActivityAccountMonth();
+        raffleActivityAccountMonth.setUserId(createQuotaOrderAggregate.getUserId());
+        raffleActivityAccountMonth.setActivityId(createQuotaOrderAggregate.getActivityId());
+        raffleActivityAccountMonth.setMonth(raffleActivityAccountMonth.currentMonth());
+        raffleActivityAccountMonth.setMonthCount(createQuotaOrderAggregate.getMonthCount());
+        raffleActivityAccountMonth.setMonthCountSurplus(createQuotaOrderAggregate.getMonthCount());
+
+        // 账户对象 - 日
+        RaffleActivityAccountDay raffleActivityAccountDay = new RaffleActivityAccountDay();
+        raffleActivityAccountDay.setUserId(createQuotaOrderAggregate.getUserId());
+        raffleActivityAccountDay.setActivityId(createQuotaOrderAggregate.getActivityId());
+        raffleActivityAccountDay.setDay(raffleActivityAccountDay.currentDay());
+        raffleActivityAccountDay.setDayCount(createQuotaOrderAggregate.getDayCount());
+        raffleActivityAccountDay.setDayCountSurplus(createQuotaOrderAggregate.getDayCount());
 
         try {
             // 在dbRouter中存储此次要选用的库和表
@@ -171,6 +187,16 @@ public class ActivityRepository implements IActivityRepository {
                     // 如果账户不存在则创建账户
                     if(count == 0) {
                         raffleActivityAccountDao.insert(raffleActivityAccount);
+                    }
+                    // 4. 更新账户 - 月
+                    int MonthCount =  raffleActivityAccountMonthDao.updateAccountQuota(raffleActivityAccountMonth);
+                    if(MonthCount == 0) {
+                        raffleActivityAccountMonthDao.insertActivityAccountMonth(raffleActivityAccountMonth);
+                    }
+                    // 5. 更新账户 - 日
+                    int DayCount = raffleActivityAccountDayDao.updateAccountQuota(raffleActivityAccountDay);
+                    if(DayCount == 0) {
+                        raffleActivityAccountDayDao.insertActivityAccountDay(raffleActivityAccountDay);
                     }
                     return 1;
 

@@ -36,15 +36,12 @@ public abstract class AbstractRaffleActivityAccountQuotaAccountQuota extends Raf
             throw new AppException(ResponseCode.ILLEGAL_PARAMETER.getCode(),ResponseCode.ILLEGAL_PARAMETER.getInfo());
         }
 
-        // 2. 查询基础信息
-        // 通过sku查询活动信息
+        // 2. 查询 “活动sku” 相关的基础信息
         ActivitySkuEntity activitySkuEntity = queryActivitySku(sku);
-        // 查询活动信息
         ActivityEntity activityEntity = queryRaffleActivityByActivityId(activitySkuEntity.getActivityId());
-        // 查询次数信息（用户在活动上可参与的次数）
         ActivityCountEntity activityCountEntity = queryRaffleActivityCountByActivityCountId(activitySkuEntity.getActivityCountId());
 
-        // 3. 活动动作规则校验
+        // 3. “活动动作” 规则校验
         IActionChain actionChain = defaultActivityChainFactory.openActionChain();
         actionChain.action(activitySkuEntity, activityEntity, activityCountEntity);
 
