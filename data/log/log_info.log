@@ -524,3 +524,898 @@ org.example.types.exception.AppException: null
 25-04-16.14:58:04.900 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
 25-04-16.14:58:05.278 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
 25-04-16.14:58:05.278 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.13:43:29.319 [main            ] INFO  Application            - Starting Application using Java 1.8.0_391 on joe with PID 48240 (D:\java_study_foundation\big-market\big-market-app\target\classes started by 12789 in D:\java_study_foundation\big-market)
+25-04-23.13:43:29.322 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-04-23.13:43:30.600 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-04-23.13:43:30.603 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-04-23.13:43:30.673 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 56 ms. Found 0 Redis repository interfaces.
+25-04-23.13:43:31.605 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-04-23.13:43:31.614 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-04-23.13:43:31.615 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-04-23.13:43:31.615 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-04-23.13:43:31.801 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-04-23.13:43:31.801 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2423 ms
+25-04-23.13:43:32.128 [main            ] INFO  Version                - Redisson 3.23.4
+25-04-23.13:43:32.663 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for localhost/127.0.0.1:16379
+25-04-23.13:43:32.688 [redisson-netty-2-14] INFO  MasterConnectionPool   - 5 connections initialized for localhost/127.0.0.1:16379
+25-04-23.13:43:34.807 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-04-23.13:43:34.902 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-04-23.13:43:34.923 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-04-23.13:43:34.928 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [127.0.0.1:5672]
+25-04-23.13:43:35.034 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#7739aac4:0/SimpleConnection@4c8d45cf [delegate=amqp://admin@127.0.0.1:5672/, localPort= 58163]
+25-04-23.13:43:35.163 [main            ] INFO  Application            - Started Application in 6.346 seconds (JVM running for 7.388)
+25-04-23.13:43:35.318 [RMI TCP Connection(1)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.13:43:35.629 [RMI TCP Connection(1)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.13:43:35.648 [RMI TCP Connection(1)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.13:43:35.667 [RMI TCP Connection(3)-192.168.123.222] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-04-23.13:43:35.668 [RMI TCP Connection(3)-192.168.123.222] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-04-23.13:43:35.670 [RMI TCP Connection(3)-192.168.123.222] INFO  DispatcherServlet      - Completed initialization in 2 ms
+25-04-23.13:43:35.683 [RMI TCP Connection(1)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.13:44:16.712 [http-nio-8091-exec-1] INFO  RaffleActivityController - 活动装配，数据预热 activityId: 100301
+25-04-23.13:44:16.712 [http-nio-8091-exec-1] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.13:44:16.758 [http-nio-8091-exec-1] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.13:44:17.163 [http-nio-8091-exec-1] INFO  RaffleActivityController - 活动装配，数据预热，完成 activityId: 100301
+25-04-23.13:45:00.314 [http-nio-8091-exec-2] INFO  RaffleActivityController - 活动抽奖 userId: xiaofuge  activityId: 100301
+25-04-23.13:45:00.340 [http-nio-8091-exec-2] ERROR RaffleActivityController - 活动抽奖失败 userId: xiaofuge  activityId: 100301
+java.lang.ClassCastException: com.alibaba.fastjson.JSONObject cannot be cast to org.example.domain.activity.model.entity.ActivityEntity
+	at org.example.infrastructure.persistent.repository.ActivityRepository.queryRaffleActivityByActivityId(ActivityRepository.java:97)
+	at org.example.infrastructure.persistent.repository.ActivityRepository$$FastClassBySpringCGLIB$$5fd30843.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at org.example.infrastructure.persistent.repository.ActivityRepository$$EnhancerBySpringCGLIB$$dc882c27.queryRaffleActivityByActivityId(<generated>)
+	at org.example.domain.activity.service.partake.AbstractRaffleActivityPartakeService.createOrder(AbstractRaffleActivityPartakeService.java:40)
+	at org.example.domain.activity.service.partake.RaffleActivityPartakeService.createOrder(RaffleActivityPartakeService.java:114)
+	at org.example.trigger.http.RaffleActivityController.draw(RaffleActivityController.java:120)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:750)
+25-04-23.13:47:26.801 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.13:47:26.804 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.13:47:26.806 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.13:47:27.255 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.13:47:27.255 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.13:47:27.255 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.13:47:27.577 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.13:47:27.578 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.13:47:27.578 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.13:47:34.697 [main            ] INFO  Application            - Starting Application using Java 1.8.0_391 on joe with PID 51776 (D:\java_study_foundation\big-market\big-market-app\target\classes started by 12789 in D:\java_study_foundation\big-market)
+25-04-23.13:47:34.698 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-04-23.13:47:35.996 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-04-23.13:47:35.998 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-04-23.13:47:36.084 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 72 ms. Found 0 Redis repository interfaces.
+25-04-23.13:47:37.060 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-04-23.13:47:37.073 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-04-23.13:47:37.073 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-04-23.13:47:37.073 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-04-23.13:47:37.363 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-04-23.13:47:37.363 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2614 ms
+25-04-23.13:47:37.780 [main            ] INFO  Version                - Redisson 3.23.4
+25-04-23.13:47:38.509 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for localhost/127.0.0.1:16379
+25-04-23.13:47:38.532 [redisson-netty-2-14] INFO  MasterConnectionPool   - 5 connections initialized for localhost/127.0.0.1:16379
+25-04-23.13:47:40.968 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-04-23.13:47:41.073 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-04-23.13:47:41.093 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-04-23.13:47:41.094 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [127.0.0.1:5672]
+25-04-23.13:47:41.139 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#4f664bee:0/SimpleConnection@6ea3a513 [delegate=amqp://admin@127.0.0.1:5672/, localPort= 58450]
+25-04-23.13:47:41.239 [main            ] INFO  Application            - Started Application in 7.041 seconds (JVM running for 8.182)
+25-04-23.13:47:41.486 [RMI TCP Connection(2)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.13:47:41.793 [RMI TCP Connection(2)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.13:47:41.823 [RMI TCP Connection(2)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.13:47:41.871 [RMI TCP Connection(2)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.13:47:42.296 [RMI TCP Connection(4)-192.168.123.222] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-04-23.13:47:42.297 [RMI TCP Connection(4)-192.168.123.222] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-04-23.13:47:42.299 [RMI TCP Connection(4)-192.168.123.222] INFO  DispatcherServlet      - Completed initialization in 2 ms
+25-04-23.13:47:47.513 [http-nio-8091-exec-1] INFO  RaffleActivityController - 活动装配，数据预热 activityId: 100301
+25-04-23.13:47:47.515 [http-nio-8091-exec-1] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.13:47:47.546 [http-nio-8091-exec-1] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.13:47:47.623 [redisson-netty-2-13] ERROR CommandDecoder         - Unable to decode data. channel: [id: 0x51d19374, L:/127.0.0.1:58447 - R:localhost/127.0.0.1:16379], reply: ReplayingDecoderByteBuf(ridx=157, widx=157), command: (GET), promise: java.util.concurrent.CompletableFuture@112a5db9[Not completed, 1 dependents], params: [big_market_activity_count_key_11101]
+com.esotericsoftware.kryo.KryoException: Encountered unregistered class ID: 121
+	at com.esotericsoftware.kryo.util.DefaultClassResolver.readClass(DefaultClassResolver.java:159)
+	at com.esotericsoftware.kryo.Kryo.readClass(Kryo.java:758)
+	at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:869)
+	at org.redisson.codec.Kryo5Codec$4.decode(Kryo5Codec.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:394)
+	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:205)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
+	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:750)
+25-04-23.13:47:47.631 [redisson-netty-2-13] ERROR ErrorsLoggingHandler   - Exception occured. Channel: [id: 0x51d19374, L:/127.0.0.1:58447 - R:localhost/127.0.0.1:16379]
+io.netty.handler.codec.DecoderException: com.esotericsoftware.kryo.KryoException: Encountered unregistered class ID: 121
+	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:421)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: com.esotericsoftware.kryo.KryoException: Encountered unregistered class ID: 121
+	at com.esotericsoftware.kryo.util.DefaultClassResolver.readClass(DefaultClassResolver.java:159)
+	at com.esotericsoftware.kryo.Kryo.readClass(Kryo.java:758)
+	at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:869)
+	at org.redisson.codec.Kryo5Codec$4.decode(Kryo5Codec.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:394)
+	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:205)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
+	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
+	... 17 common frames omitted
+25-04-23.13:47:47.637 [http-nio-8091-exec-1] ERROR RaffleActivityController - 活动装配，数据预热，失败 activityId: 100301
+org.springframework.dao.InvalidDataAccessApiUsageException: Unexpected exception while processing command; nested exception is org.redisson.client.RedisException: Unexpected exception while processing command
+	at org.redisson.spring.data.connection.RedissonExceptionConverter.convert(RedissonExceptionConverter.java:52)
+	at org.redisson.spring.data.connection.RedissonExceptionConverter.convert(RedissonExceptionConverter.java:35)
+	at org.springframework.data.redis.PassThroughExceptionTranslationStrategy.translate(PassThroughExceptionTranslationStrategy.java:44)
+	at org.redisson.spring.data.connection.RedissonConnectionFactory.translateExceptionIfPossible(RedissonConnectionFactory.java:91)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:242)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at org.example.infrastructure.persistent.repository.ActivityRepository$$EnhancerBySpringCGLIB$$de21950a.queryRaffleActivityCountByActivityCountId(<generated>)
+	at org.example.domain.activity.service.armory.ActivityArmory.assembleActivitySkuByActivityId(ActivityArmory.java:33)
+	at org.example.trigger.http.RaffleActivityController.armory(RaffleActivityController.java:69)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: org.redisson.client.RedisException: Unexpected exception while processing command
+	at org.redisson.command.CommandAsyncService.convertException(CommandAsyncService.java:299)
+	at org.redisson.command.CommandAsyncService.get(CommandAsyncService.java:116)
+	at org.redisson.RedissonObject.get(RedissonObject.java:90)
+	at org.redisson.RedissonBucket.get(RedissonBucket.java:135)
+	at org.example.infrastructure.persistent.redis.RedissonService.getValue(RedissonService.java:33)
+	at org.example.infrastructure.persistent.repository.ActivityRepository.queryRaffleActivityCountByActivityCountId(ActivityRepository.java:119)
+	at org.example.infrastructure.persistent.repository.ActivityRepository$$FastClassBySpringCGLIB$$5fd30843.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	... 60 common frames omitted
+Caused by: com.esotericsoftware.kryo.KryoException: Encountered unregistered class ID: 121
+	at com.esotericsoftware.kryo.util.DefaultClassResolver.readClass(DefaultClassResolver.java:159)
+	at com.esotericsoftware.kryo.Kryo.readClass(Kryo.java:758)
+	at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:869)
+	at org.redisson.codec.Kryo5Codec$4.decode(Kryo5Codec.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:394)
+	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:205)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
+	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	... 1 common frames omitted
+25-04-23.13:48:03.205 [http-nio-8091-exec-5] INFO  RaffleActivityController - 活动装配，数据预热 activityId: 100301
+25-04-23.13:48:03.220 [redisson-netty-2-9] ERROR CommandDecoder         - Unable to decode data. channel: [id: 0xaaa07aa9, L:/127.0.0.1:58445 - R:localhost/127.0.0.1:16379], reply: ReplayingDecoderByteBuf(ridx=157, widx=157), command: (GET), promise: java.util.concurrent.CompletableFuture@214fe1e4[Not completed, 1 dependents], params: [big_market_activity_count_key_11101]
+com.esotericsoftware.kryo.KryoException: Encountered unregistered class ID: 121
+	at com.esotericsoftware.kryo.util.DefaultClassResolver.readClass(DefaultClassResolver.java:159)
+	at com.esotericsoftware.kryo.Kryo.readClass(Kryo.java:758)
+	at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:869)
+	at org.redisson.codec.Kryo5Codec$4.decode(Kryo5Codec.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:394)
+	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:205)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
+	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:750)
+25-04-23.13:48:03.220 [redisson-netty-2-9] ERROR ErrorsLoggingHandler   - Exception occured. Channel: [id: 0xaaa07aa9, L:/127.0.0.1:58445 - R:localhost/127.0.0.1:16379]
+io.netty.handler.codec.DecoderException: com.esotericsoftware.kryo.KryoException: Encountered unregistered class ID: 121
+	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:421)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: com.esotericsoftware.kryo.KryoException: Encountered unregistered class ID: 121
+	at com.esotericsoftware.kryo.util.DefaultClassResolver.readClass(DefaultClassResolver.java:159)
+	at com.esotericsoftware.kryo.Kryo.readClass(Kryo.java:758)
+	at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:869)
+	at org.redisson.codec.Kryo5Codec$4.decode(Kryo5Codec.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:394)
+	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:205)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
+	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
+	... 17 common frames omitted
+25-04-23.13:48:03.220 [http-nio-8091-exec-5] ERROR RaffleActivityController - 活动装配，数据预热，失败 activityId: 100301
+org.springframework.dao.InvalidDataAccessApiUsageException: Unexpected exception while processing command; nested exception is org.redisson.client.RedisException: Unexpected exception while processing command
+	at org.redisson.spring.data.connection.RedissonExceptionConverter.convert(RedissonExceptionConverter.java:52)
+	at org.redisson.spring.data.connection.RedissonExceptionConverter.convert(RedissonExceptionConverter.java:35)
+	at org.springframework.data.redis.PassThroughExceptionTranslationStrategy.translate(PassThroughExceptionTranslationStrategy.java:44)
+	at org.redisson.spring.data.connection.RedissonConnectionFactory.translateExceptionIfPossible(RedissonConnectionFactory.java:91)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:242)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at org.example.infrastructure.persistent.repository.ActivityRepository$$EnhancerBySpringCGLIB$$de21950a.queryRaffleActivityCountByActivityCountId(<generated>)
+	at org.example.domain.activity.service.armory.ActivityArmory.assembleActivitySkuByActivityId(ActivityArmory.java:33)
+	at org.example.trigger.http.RaffleActivityController.armory(RaffleActivityController.java:69)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: org.redisson.client.RedisException: Unexpected exception while processing command
+	at org.redisson.command.CommandAsyncService.convertException(CommandAsyncService.java:299)
+	at org.redisson.command.CommandAsyncService.get(CommandAsyncService.java:116)
+	at org.redisson.RedissonObject.get(RedissonObject.java:90)
+	at org.redisson.RedissonBucket.get(RedissonBucket.java:135)
+	at org.example.infrastructure.persistent.redis.RedissonService.getValue(RedissonService.java:33)
+	at org.example.infrastructure.persistent.repository.ActivityRepository.queryRaffleActivityCountByActivityCountId(ActivityRepository.java:119)
+	at org.example.infrastructure.persistent.repository.ActivityRepository$$FastClassBySpringCGLIB$$5fd30843.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	... 60 common frames omitted
+Caused by: com.esotericsoftware.kryo.KryoException: Encountered unregistered class ID: 121
+	at com.esotericsoftware.kryo.util.DefaultClassResolver.readClass(DefaultClassResolver.java:159)
+	at com.esotericsoftware.kryo.Kryo.readClass(Kryo.java:758)
+	at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:869)
+	at org.redisson.codec.Kryo5Codec$4.decode(Kryo5Codec.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:394)
+	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:205)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
+	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	... 1 common frames omitted
+25-04-23.13:48:23.975 [http-nio-8091-exec-12] INFO  RaffleActivityController - 活动装配，数据预热 activityId: 100301
+25-04-23.13:48:24.129 [http-nio-8091-exec-12] INFO  RaffleActivityController - 活动装配，数据预热，完成 activityId: 100301
+25-04-23.13:48:40.628 [http-nio-8091-exec-2] INFO  RaffleActivityController - 活动抽奖 userId: xiaofuge  activityId: 100301
+25-04-23.13:48:40.849 [http-nio-8091-exec-2] INFO  DefaultLogicChain      - 抽奖责任链—默认处理 userId:xiaofuge strategyId:100006 ruleModel:rule_default awardId:103
+25-04-23.13:48:40.854 [http-nio-8091-exec-2] INFO  AbstractRaffleStrategy - 抽奖策略计算-责任链: xiaofuge 100006 103 rule_default
+25-04-23.13:48:40.926 [http-nio-8091-exec-2] INFO  RuleStockLogicTreeNode - 规则过滤-库存扣减 userId:xiaofuge strategyId:100006 awardId:103
+25-04-23.13:48:40.989 [http-nio-8091-exec-2] INFO  DecisionTreeEngine     - 决策树引擎【规则树-兜底奖励】treeId:tree_luck_award node:rule_stock code:0001
+25-04-23.13:48:40.992 [http-nio-8091-exec-2] INFO  AbstractRaffleStrategy - 抽奖策略计算-规则树 xiaofuge 100006 103 
+25-04-23.13:48:41.228 [http-nio-8091-exec-2] INFO  EventPublisher         - 发送MQ消息 topic:send_award message:{"data":{"awardId":103,"awardTitle":"支付优惠券","userId":"xiaofuge"},"id":"23167457204","timestamp":"2025-04-23 13:48:41.011"}
+25-04-23.13:48:41.263 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-1] INFO  SendAwardCustomer      - 监听用户奖品发送消息 topic: send_award message: {"data":{"awardId":103,"awardTitle":"支付优惠券","userId":"xiaofuge"},"id":"23167457204","timestamp":"2025-04-23 13:48:41.011"}
+25-04-23.13:48:45.005 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存 strategyId: 103 awardId: 103
+25-04-23.14:04:10.380 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.14:04:10.382 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.14:04:10.384 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.14:04:10.673 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.14:04:10.777 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.14:04:11.137 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.14:04:11.499 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.14:04:11.499 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.14:04:11.499 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.14:56:06.776 [main            ] INFO  Application            - Starting Application using Java 1.8.0_391 on joe with PID 21072 (D:\java_study_foundation\big-market\big-market-app\target\classes started by 12789 in D:\java_study_foundation\big-market)
+25-04-23.14:56:06.780 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-04-23.14:56:08.062 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-04-23.14:56:08.065 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-04-23.14:56:08.142 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 64 ms. Found 0 Redis repository interfaces.
+25-04-23.14:56:09.026 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-04-23.14:56:09.037 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-04-23.14:56:09.038 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-04-23.14:56:09.038 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-04-23.14:56:09.308 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-04-23.14:56:09.309 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2477 ms
+25-04-23.14:56:09.686 [main            ] INFO  Version                - Redisson 3.23.4
+25-04-23.14:56:10.318 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for localhost/127.0.0.1:16379
+25-04-23.14:56:10.342 [redisson-netty-2-14] INFO  MasterConnectionPool   - 5 connections initialized for localhost/127.0.0.1:16379
+25-04-23.14:56:12.891 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-04-23.14:56:13.048 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-04-23.14:56:13.067 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-04-23.14:56:13.071 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [127.0.0.1:5672]
+25-04-23.14:56:13.171 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#4f664bee:0/SimpleConnection@6ea3a513 [delegate=amqp://admin@127.0.0.1:5672/, localPort= 60997]
+25-04-23.14:56:13.296 [main            ] INFO  Application            - Started Application in 7.028 seconds (JVM running for 8.025)
+25-04-23.14:56:13.876 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.14:56:14.175 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.14:56:14.198 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.14:56:14.198 [RMI TCP Connection(4)-192.168.123.222] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-04-23.14:56:14.198 [RMI TCP Connection(4)-192.168.123.222] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-04-23.14:56:14.202 [RMI TCP Connection(4)-192.168.123.222] INFO  DispatcherServlet      - Completed initialization in 4 ms
+25-04-23.14:56:14.243 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.14:56:33.474 [http-nio-8091-exec-2] INFO  RaffleActivityController - 活动装配，数据预热 activityId: 100301
+25-04-23.14:56:33.476 [http-nio-8091-exec-2] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.14:56:33.527 [http-nio-8091-exec-2] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.14:56:33.703 [http-nio-8091-exec-2] INFO  RaffleActivityController - 活动装配，数据预热，完成 activityId: 100301
+25-04-23.14:56:39.684 [http-nio-8091-exec-7] INFO  RaffleActivityController - 日历签到返利开始 userId:xiaofuge
+25-04-23.14:56:39.813 [http-nio-8091-exec-7] ERROR RaffleActivityController - 日历签到返利失败 userId:xiaofuge
+25-04-23.14:57:40.003 [http-nio-8091-exec-11] INFO  RaffleActivityController - 日历签到返利开始 userId:xiaofuge
+25-04-23.14:57:40.028 [http-nio-8091-exec-11] ERROR RaffleActivityController - 日历签到返利失败 userId:xiaofuge
+25-04-23.14:58:50.704 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.14:58:50.706 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.14:58:50.708 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.14:58:50.828 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.14:58:50.866 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.14:58:50.866 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.14:58:51.352 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.14:58:51.352 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.14:58:51.352 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.14:58:58.184 [main            ] INFO  Application            - Starting Application using Java 1.8.0_391 on joe with PID 51144 (D:\java_study_foundation\big-market\big-market-app\target\classes started by 12789 in D:\java_study_foundation\big-market)
+25-04-23.14:58:58.196 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-04-23.14:58:59.581 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-04-23.14:58:59.583 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-04-23.14:58:59.663 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 60 ms. Found 0 Redis repository interfaces.
+25-04-23.14:59:00.810 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-04-23.14:59:00.823 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-04-23.14:59:00.823 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-04-23.14:59:00.823 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-04-23.14:59:01.133 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-04-23.14:59:01.133 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2872 ms
+25-04-23.14:59:01.731 [main            ] INFO  Version                - Redisson 3.23.4
+25-04-23.14:59:02.764 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for localhost/127.0.0.1:16379
+25-04-23.14:59:02.793 [redisson-netty-2-14] INFO  MasterConnectionPool   - 5 connections initialized for localhost/127.0.0.1:16379
+25-04-23.14:59:06.567 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-04-23.14:59:06.742 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-04-23.14:59:06.775 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-04-23.14:59:06.782 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [127.0.0.1:5672]
+25-04-23.14:59:06.870 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#4ce18cec:0/SimpleConnection@1f6ba47b [delegate=amqp://admin@127.0.0.1:5672/, localPort= 61172]
+25-04-23.14:59:07.035 [main            ] INFO  Application            - Started Application in 9.554 seconds (JVM running for 11.191)
+25-04-23.14:59:07.409 [RMI TCP Connection(1)-192.168.123.222] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-04-23.14:59:07.410 [RMI TCP Connection(1)-192.168.123.222] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-04-23.14:59:07.411 [RMI TCP Connection(1)-192.168.123.222] INFO  DispatcherServlet      - Completed initialization in 1 ms
+25-04-23.14:59:07.984 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.14:59:08.611 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.14:59:08.725 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.14:59:08.762 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.14:59:18.641 [http-nio-8091-exec-2] INFO  RaffleActivityController - 日历签到返利开始 userId:xiaofuge
+25-04-23.14:59:34.056 [http-nio-8091-exec-2] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.14:59:34.316 [http-nio-8091-exec-2] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.15:01:24.881 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=2m16s6ms894µs100ns).
+25-04-23.15:01:24.881 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=2m16s161ms927µs100ns).
+25-04-23.15:01:24.882 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=1m49s667ms144µs900ns).
+25-04-23.15:01:25.402 [http-nio-8091-exec-2] INFO  EventPublisher         - 发送MQ消息 topic:send_rebate message:{"data":{"bizId":"xiaofuge_sku_20250423","rebateConfig":"9011","rebateType":"sku","userId":"xiaofuge"},"id":"75744027136","timestamp":"2025-04-23 15:01:24.924"}
+25-04-23.15:01:25.461 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  RebateMessageCustomer  - 监听用户行为返利消息 topic:send_rebate message:{"data":{"bizId":"xiaofuge_sku_20250423","rebateConfig":"9011","rebateType":"sku","userId":"xiaofuge"},"id":"75744027136","timestamp":"2025-04-23 15:01:24.924"}
+25-04-23.15:01:25.475 [http-nio-8091-exec-2] INFO  EventPublisher         - 发送MQ消息 topic:send_rebate message:{"data":{"bizId":"xiaofuge_integral_20250423","rebateConfig":"10","rebateType":"integral","userId":"xiaofuge"},"id":"28391145098","timestamp":"2025-04-23 15:01:24.938"}
+25-04-23.15:01:25.497 [http-nio-8091-exec-2] INFO  RaffleActivityController - 日历签到返利完成 userId:xiaofuge orderIds: ["208710705075","194073217921"]
+25-04-23.15:01:25.882 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+25-04-23.15:01:25.885 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  ActivitySkuStockActionChain - 活动责任链-商店库存处理【有效期、状态、库存(sku)】开始。sku:9011 activityId:100301
+25-04-23.15:01:25.936 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期、状态、库存(sku)】成功。sku:9011 activityId:100301
+25-04-23.15:01:26.153 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  RebateMessageCustomer  - 监听用户行为返利消息 topic:send_rebate message:{"data":{"bizId":"xiaofuge_integral_20250423","rebateConfig":"10","rebateType":"integral","userId":"xiaofuge"},"id":"28391145098","timestamp":"2025-04-23 15:01:24.938"}
+25-04-23.15:01:26.158 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  RebateMessageCustomer  - 监听用户行为返利信息 - 非sku奖励暂时不处理 topic:send_rebate message:SendRebateMessageEvent.RebateMessage(userId=xiaofuge, rebateDesc=null, rebateType=integral, rebateConfig=10, bizId=xiaofuge_integral_20250423)
+25-04-23.15:01:30.016 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务，更新活动sku库存 sku:9011 activityId:100301
+25-04-23.15:18:53.933 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=10m58s972ms883µs200ns).
+25-04-23.15:18:53.949 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=10m58s971ms852µs200ns).
+25-04-23.15:18:53.949 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=10m58s972ms653µs).
+25-04-23.15:19:02.079 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.15:19:02.083 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.15:19:02.111 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.15:19:02.624 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.15:19:02.649 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.15:19:02.711 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.15:19:03.028 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.15:19:03.028 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.15:19:03.028 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.17:07:29.036 [main            ] INFO  Application            - Starting Application using Java 1.8.0_391 on joe with PID 53092 (D:\java_study_foundation\big-market\big-market-app\target\classes started by 12789 in D:\java_study_foundation\big-market)
+25-04-23.17:07:29.039 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-04-23.17:07:30.433 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-04-23.17:07:30.436 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-04-23.17:07:30.525 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 73 ms. Found 0 Redis repository interfaces.
+25-04-23.17:07:31.417 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-04-23.17:07:31.429 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-04-23.17:07:31.430 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-04-23.17:07:31.430 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-04-23.17:07:31.681 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-04-23.17:07:31.681 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2594 ms
+25-04-23.17:07:31.927 [main            ] INFO  Application            - Starting Application using Java 1.8.0_391 on joe with PID 52852 (D:\java_study_foundation\big-market\big-market-app\target\classes started by 12789 in D:\java_study_foundation\big-market)
+25-04-23.17:07:31.928 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-04-23.17:07:32.068 [main            ] INFO  Version                - Redisson 3.23.4
+25-04-23.17:07:32.678 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for localhost/127.0.0.1:16379
+25-04-23.17:07:32.708 [redisson-netty-2-14] INFO  MasterConnectionPool   - 5 connections initialized for localhost/127.0.0.1:16379
+25-04-23.17:07:33.401 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-04-23.17:07:33.403 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-04-23.17:07:33.501 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 78 ms. Found 0 Redis repository interfaces.
+25-04-23.17:07:34.890 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-04-23.17:07:34.910 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-04-23.17:07:34.911 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-04-23.17:07:34.911 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-04-23.17:07:35.121 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-04-23.17:07:35.202 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-04-23.17:07:35.202 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3207 ms
+25-04-23.17:07:35.240 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-04-23.17:07:35.257 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-04-23.17:07:35.260 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [127.0.0.1:5672]
+25-04-23.17:07:35.431 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#4fd74223:0/SimpleConnection@25464154 [delegate=amqp://admin@127.0.0.1:5672/, localPort= 62357]
+25-04-23.17:07:35.586 [main            ] INFO  Application            - Started Application in 7.053 seconds (JVM running for 8.202)
+25-04-23.17:07:35.872 [main            ] INFO  Version                - Redisson 3.23.4
+25-04-23.17:07:36.181 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.17:07:36.440 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.17:07:36.472 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.17:07:36.515 [RMI TCP Connection(3)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.17:07:36.560 [RMI TCP Connection(4)-192.168.123.222] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-04-23.17:07:36.560 [RMI TCP Connection(4)-192.168.123.222] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-04-23.17:07:36.563 [RMI TCP Connection(4)-192.168.123.222] INFO  DispatcherServlet      - Completed initialization in 2 ms
+25-04-23.17:07:37.150 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for localhost/127.0.0.1:16379
+25-04-23.17:07:37.175 [redisson-netty-2-14] INFO  MasterConnectionPool   - 5 connections initialized for localhost/127.0.0.1:16379
+25-04-23.17:07:40.557 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-04-23.17:07:40.776 [main            ] WARN  AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8091 is already in use
+25-04-23.17:07:47.940 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.17:07:47.942 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.17:07:47.944 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.17:07:48.705 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.17:07:48.705 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.17:07:48.719 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.17:07:49.044 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.17:07:49.044 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.17:07:49.046 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.17:07:55.119 [main            ] INFO  Application            - Starting Application using Java 1.8.0_391 on joe with PID 32012 (D:\java_study_foundation\big-market\big-market-app\target\classes started by 12789 in D:\java_study_foundation\big-market)
+25-04-23.17:07:55.121 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-04-23.17:07:56.668 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-04-23.17:07:56.672 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-04-23.17:07:56.772 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 78 ms. Found 0 Redis repository interfaces.
+25-04-23.17:07:58.195 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-04-23.17:07:58.213 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-04-23.17:07:58.214 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-04-23.17:07:58.214 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-04-23.17:07:58.559 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-04-23.17:07:58.559 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3370 ms
+25-04-23.17:07:59.112 [main            ] INFO  Version                - Redisson 3.23.4
+25-04-23.17:08:00.044 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for localhost/127.0.0.1:16379
+25-04-23.17:08:00.070 [redisson-netty-2-14] INFO  MasterConnectionPool   - 5 connections initialized for localhost/127.0.0.1:16379
+25-04-23.17:08:03.677 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-04-23.17:08:03.860 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-04-23.17:08:03.886 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-04-23.17:08:03.899 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [127.0.0.1:5672]
+25-04-23.17:08:04.009 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#6879e983:0/SimpleConnection@14ee143a [delegate=amqp://admin@127.0.0.1:5672/, localPort= 62557]
+25-04-23.17:08:04.197 [main            ] INFO  Application            - Started Application in 9.768 seconds (JVM running for 11.111)
+25-04-23.17:08:04.393 [RMI TCP Connection(1)-192.168.123.222] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-04-23.17:08:04.393 [RMI TCP Connection(1)-192.168.123.222] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-04-23.17:08:04.395 [RMI TCP Connection(1)-192.168.123.222] INFO  DispatcherServlet      - Completed initialization in 1 ms
+25-04-23.17:08:05.252 [pool-3-thread-1 ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.17:08:06.085 [pool-3-thread-1 ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.17:08:06.289 [RMI TCP Connection(5)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.17:08:06.317 [RMI TCP Connection(5)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.17:08:31.530 [http-nio-8091-exec-5] INFO  RaffleActivityController - 活动抽奖 userId: xiaofuge  activityId: 100301
+25-04-23.17:08:31.592 [http-nio-8091-exec-5] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.17:08:31.649 [http-nio-8091-exec-5] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.17:08:32.283 [http-nio-8091-exec-5] INFO  BlackListLogicChain    - 抽奖责任链—黑名单处理 userId:xiaofuge strategyId:100006 ruleModel:rule_default 
+25-04-23.17:08:32.399 [http-nio-8091-exec-5] ERROR RaffleActivityController - 活动抽奖失败 userId: xiaofuge  activityId: 100301
+java.lang.NullPointerException: null
+	at org.example.domain.strategy.service.rule.chain.impl.BlackListLogicChain.logic(BlackListLogicChain.java:29)
+	at org.example.domain.strategy.service.raffle.DefaultRaffleStrategy.raffleLogicChain(DefaultRaffleStrategy.java:44)
+	at org.example.domain.strategy.service.AbstractRaffleStrategy.performRaffle(AbstractRaffleStrategy.java:56)
+	at org.example.trigger.http.RaffleActivityController.draw(RaffleActivityController.java:134)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:750)
+25-04-23.17:08:35.882 [http-nio-8091-exec-3] INFO  RaffleActivityController - 活动装配，数据预热 activityId: 100301
+25-04-23.17:08:36.131 [http-nio-8091-exec-3] INFO  RaffleActivityController - 活动装配，数据预热，完成 activityId: 100301
+25-04-23.17:08:39.583 [http-nio-8091-exec-10] INFO  RaffleActivityController - 活动抽奖 userId: xiaofuge  activityId: 100301
+25-04-23.17:08:40.060 [http-nio-8091-exec-10] INFO  AbstractRaffleActivityPartakeService - 创建参与活动订单 userID:xiaofuge, activityID:100301, userRaffleOrderEntity:{"activityId":100301,"activityName":"测试活动","orderId":"597989702792","orderState":"create","orderTime":"2025-04-23 17:08:32","strategyId":100006,"userId":"xiaofuge"}
+25-04-23.17:08:40.064 [http-nio-8091-exec-10] INFO  BlackListLogicChain    - 抽奖责任链—黑名单处理 userId:xiaofuge strategyId:100006 ruleModel:rule_default 
+25-04-23.17:08:40.071 [http-nio-8091-exec-10] ERROR RaffleActivityController - 活动抽奖失败 userId: xiaofuge  activityId: 100301
+java.lang.NullPointerException: null
+	at org.example.domain.strategy.service.rule.chain.impl.BlackListLogicChain.logic(BlackListLogicChain.java:29)
+	at org.example.domain.strategy.service.raffle.DefaultRaffleStrategy.raffleLogicChain(DefaultRaffleStrategy.java:44)
+	at org.example.domain.strategy.service.AbstractRaffleStrategy.performRaffle(AbstractRaffleStrategy.java:56)
+	at org.example.trigger.http.RaffleActivityController.draw(RaffleActivityController.java:134)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:750)
+25-04-23.17:08:57.946 [http-nio-8091-exec-2] INFO  RaffleActivityController - 日历签到返利开始 userId:xiaofuge
+25-04-23.17:08:58.098 [http-nio-8091-exec-2] INFO  EventPublisher         - 发送MQ消息 topic:send_rebate message:{"data":{"bizId":"xiaofuge_sku_20250423","rebateConfig":"9011","rebateType":"sku","userId":"xiaofuge"},"id":"13591069303","timestamp":"2025-04-23 17:08:57.99"}
+25-04-23.17:08:58.127 [http-nio-8091-exec-2] INFO  EventPublisher         - 发送MQ消息 topic:send_rebate message:{"data":{"bizId":"xiaofuge_integral_20250423","rebateConfig":"10","rebateType":"integral","userId":"xiaofuge"},"id":"29121223283","timestamp":"2025-04-23 17:08:58.001"}
+25-04-23.17:08:58.160 [http-nio-8091-exec-2] INFO  RaffleActivityController - 日历签到返利完成 userId:xiaofuge orderIds: ["137680987647","430187641548"]
+25-04-23.17:08:58.206 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  RebateMessageCustomer  - 监听用户行为返利消息 topic:send_rebate message:{"data":{"bizId":"xiaofuge_sku_20250423","rebateConfig":"9011","rebateType":"sku","userId":"xiaofuge"},"id":"13591069303","timestamp":"2025-04-23 17:08:57.99"}
+25-04-23.17:09:20.895 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+25-04-23.17:09:20.896 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  ActivitySkuStockActionChain - 活动责任链-商店库存处理【有效期、状态、库存(sku)】开始。sku:9011 activityId:100301
+25-04-23.17:09:20.905 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期、状态、库存(sku)】成功。sku:9011 activityId:100301
+25-04-23.17:10:14.136 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务，更新活动sku库存 sku:9011 activityId:100301
+25-04-23.17:10:14.154 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  RebateMessageCustomer  - 监听用户行为返利消息 topic:send_rebate message:{"data":{"bizId":"xiaofuge_integral_20250423","rebateConfig":"10","rebateType":"integral","userId":"xiaofuge"},"id":"29121223283","timestamp":"2025-04-23 17:08:58.001"}
+25-04-23.17:10:14.158 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  RebateMessageCustomer  - 监听用户行为返利信息 - 非sku奖励暂时不处理 topic:send_rebate message:SendRebateMessageEvent.RebateMessage(userId=xiaofuge, rebateDesc=null, rebateType=integral, rebateConfig=10, bizId=xiaofuge_integral_20250423)
+25-04-23.17:10:14.202 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.17:10:14.205 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.17:10:14.206 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.17:10:15.165 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.17:10:15.165 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.17:10:15.167 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.17:10:15.504 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.17:10:15.505 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.17:10:15.505 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.17:10:41.398 [main            ] INFO  Application            - Starting Application using Java 1.8.0_391 on joe with PID 43700 (D:\java_study_foundation\big-market\big-market-app\target\classes started by 12789 in D:\java_study_foundation\big-market)
+25-04-23.17:10:41.399 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-04-23.17:10:42.729 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-04-23.17:10:42.732 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-04-23.17:10:42.808 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 58 ms. Found 0 Redis repository interfaces.
+25-04-23.17:10:44.001 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-04-23.17:10:44.015 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-04-23.17:10:44.016 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-04-23.17:10:44.017 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-04-23.17:10:44.337 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-04-23.17:10:44.337 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2870 ms
+25-04-23.17:10:44.906 [main            ] INFO  Version                - Redisson 3.23.4
+25-04-23.17:10:45.828 [redisson-netty-2-6] INFO  MasterPubSubConnectionPool - 1 connections initialized for localhost/127.0.0.1:16379
+25-04-23.17:10:45.857 [redisson-netty-2-14] INFO  MasterConnectionPool   - 5 connections initialized for localhost/127.0.0.1:16379
+25-04-23.17:10:49.220 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-04-23.17:10:49.378 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-04-23.17:10:49.415 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-04-23.17:10:49.420 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [127.0.0.1:5672]
+25-04-23.17:10:49.541 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#7e0883f3:0/SimpleConnection@4d6027be [delegate=amqp://admin@127.0.0.1:5672/, localPort= 62771]
+25-04-23.17:10:49.708 [main            ] INFO  Application            - Started Application in 8.939 seconds (JVM running for 10.363)
+25-04-23.17:10:50.151 [pool-3-thread-1 ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.17:10:50.568 [RMI TCP Connection(3)-192.168.123.222] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-04-23.17:10:50.568 [RMI TCP Connection(3)-192.168.123.222] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-04-23.17:10:50.572 [RMI TCP Connection(3)-192.168.123.222] INFO  DispatcherServlet      - Completed initialization in 4 ms
+25-04-23.17:10:51.064 [pool-3-thread-1 ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.17:10:51.348 [RMI TCP Connection(6)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.17:10:51.373 [RMI TCP Connection(6)-192.168.123.222] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.17:11:11.659 [http-nio-8091-exec-1] INFO  RaffleActivityController - 活动装配，数据预热 activityId: 100301
+25-04-23.17:11:11.662 [http-nio-8091-exec-1] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+25-04-23.17:11:11.713 [http-nio-8091-exec-1] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+25-04-23.17:11:12.230 [http-nio-8091-exec-1] INFO  RaffleActivityController - 活动装配，数据预热，完成 activityId: 100301
+25-04-23.17:11:19.166 [http-nio-8091-exec-3] INFO  RaffleActivityController - 日历签到返利开始 userId:xiaofuge
+25-04-23.17:11:19.771 [http-nio-8091-exec-3] INFO  EventPublisher         - 发送MQ消息 topic:send_rebate message:{"data":{"bizId":"xiaofuge_sku_20250423","rebateConfig":"9011","rebateType":"sku","userId":"xiaofuge"},"id":"23896581785","timestamp":"2025-04-23 17:11:19.214"}
+25-04-23.17:11:19.849 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  RebateMessageCustomer  - 监听用户行为返利消息 topic:send_rebate message:{"data":{"bizId":"xiaofuge_sku_20250423","rebateConfig":"9011","rebateType":"sku","userId":"xiaofuge"},"id":"23896581785","timestamp":"2025-04-23 17:11:19.214"}
+25-04-23.17:11:19.892 [http-nio-8091-exec-3] INFO  EventPublisher         - 发送MQ消息 topic:send_rebate message:{"data":{"bizId":"xiaofuge_integral_20250423","rebateConfig":"10","rebateType":"integral","userId":"xiaofuge"},"id":"93731527760","timestamp":"2025-04-23 17:11:19.228"}
+25-04-23.17:11:19.933 [http-nio-8091-exec-3] INFO  RaffleActivityController - 日历签到返利完成 userId:xiaofuge orderIds: ["087569615308","604476850553"]
+25-04-23.17:11:22.529 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+25-04-23.17:11:22.529 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  ActivitySkuStockActionChain - 活动责任链-商店库存处理【有效期、状态、库存(sku)】开始。sku:9011 activityId:100301
+25-04-23.17:11:22.557 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期、状态、库存(sku)】成功。sku:9011 activityId:100301
+25-04-23.17:11:35.728 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务，更新活动sku库存 sku:9011 activityId:100301
+25-04-23.17:12:07.541 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  RebateMessageCustomer  - 监听用户行为返利消息 topic:send_rebate message:{"data":{"bizId":"xiaofuge_integral_20250423","rebateConfig":"10","rebateType":"integral","userId":"xiaofuge"},"id":"93731527760","timestamp":"2025-04-23 17:11:19.228"}
+25-04-23.17:12:07.545 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  RebateMessageCustomer  - 监听用户行为返利信息 - 非sku奖励暂时不处理 topic:send_rebate message:SendRebateMessageEvent.RebateMessage(userId=xiaofuge, rebateDesc=null, rebateType=integral, rebateConfig=10, bizId=xiaofuge_integral_20250423)
+25-04-23.17:12:37.487 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=46s948ms903µs500ns).
+25-04-23.17:12:50.597 [redisson-timer-4-1] ERROR PingConnectionHandler  - Unable to send PING command over channel: [id: 0x92536051, L:/127.0.0.1:62764 - R:localhost/127.0.0.1:16379]
+org.redisson.client.RedisTimeoutException: Command execution timeout for command: (PING), params: [], Redis client: [addr=redis://localhost:16379]
+	at org.redisson.client.RedisConnection.lambda$async$0(RedisConnection.java:256)
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.run(HashedWheelTimer.java:715)
+	at io.netty.util.concurrent.ImmediateExecutor.execute(ImmediateExecutor.java:34)
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:703)
+	at io.netty.util.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:790)
+	at io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:503)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:750)
+25-04-23.17:14:56.935 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.17:14:56.937 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.17:14:56.938 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+25-04-23.17:14:57.014 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.17:14:57.076 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.17:14:57.412 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+25-04-23.17:14:57.748 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.17:14:57.748 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+25-04-23.17:14:57.749 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped

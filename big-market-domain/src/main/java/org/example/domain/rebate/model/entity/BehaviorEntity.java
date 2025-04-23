@@ -16,7 +16,7 @@ public class BehaviorEntity {
     private String userId;
 
     /** 行为类型 */
-    private BehaviorTypeVO behaviorType;
+    private BehaviorTypeVO behaviorTypeVO;
 
     /** 唯一值，幂等 */
     private String outBusinessNo;

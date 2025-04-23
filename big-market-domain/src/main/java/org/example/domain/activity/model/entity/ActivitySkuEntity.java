@@ -21,7 +21,7 @@ public class ActivitySkuEntity {
     private Long sku;
     /** 活动ID */
     private Long activityId;
-    /** 活动个人参数ID；在这个活动上，一个人可参与多少次活动（总、日、月） */
+    /** 活动个人(普通人) 参数ID (拆开) --> 在这个活动sku上，一个人可参与(使用)多少次活动sku（总、日、月） */
     private Long activityCountId;
     /** 库存总量 */
     private Integer stockCount;

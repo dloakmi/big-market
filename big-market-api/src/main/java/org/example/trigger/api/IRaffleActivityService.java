@@ -2,6 +2,8 @@ package org.example.trigger.api;
 
 import org.example.trigger.api.dto.ActivityDrawRequestDTO;
 import org.example.trigger.api.dto.ActivityDrawResponseDTO;
+import org.example.trigger.api.dto.UserActivityAccountRequestDTO;
+import org.example.trigger.api.dto.UserActivityAccountResponseDTO;
 import org.example.types.model.Response;
 
 /**
@@ -29,5 +31,26 @@ public interface IRaffleActivityService {
      * @Return: 返回结果
      **/
     Response<ActivityDrawResponseDTO> draw(ActivityDrawRequestDTO request);
+
+    /**
+     * @description: 日历签到返利接口
+     * @author: 超级机智的赛尔
+     * @date: 2025/4/23 15:20
+     * @param userId 用户ID
+     * @Return: 返回结果
+     **/
+    Response<Boolean> calendarSignRebate(String userId);
+
+    /**
+     * @description: 判断日历是否签到返利接口
+     * @author: 超级机智的赛尔
+     * @date: 2025/4/23 15:20
+     * @param userId 用户ID
+     * @Return: 返回结果
+     **/
+    Response<Boolean> isCalendarSignRebate(String userId);
+
+    Response<UserActivityAccountResponseDTO> queryUserActivityAccount(UserActivityAccountRequestDTO request);
+
 
 }
