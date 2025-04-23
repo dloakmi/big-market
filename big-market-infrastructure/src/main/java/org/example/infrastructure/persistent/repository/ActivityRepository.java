@@ -145,19 +145,25 @@ public class ActivityRepository implements IActivityRepository {
         raffleActivityOrder.setTotalCount(activityOrderEntity.getTotalCount());
         raffleActivityOrder.setDayCount(activityOrderEntity.getDayCount());
         raffleActivityOrder.setMonthCount(activityOrderEntity.getMonthCount());
+        raffleActivityOrder.setTotalCount(createQuotaOrderAggregate.getTotalCount());
+        raffleActivityOrder.setDayCount(createQuotaOrderAggregate.getDayCount());
+        raffleActivityOrder.setMonthCount(createQuotaOrderAggregate.getMonthCount());
         raffleActivityOrder.setState(activityOrderEntity.getState().getCode());
         raffleActivityOrder.setOutBusinessNo(activityOrderEntity.getOutBusinessNo());
 
+
+
         // 总账户对象
         RaffleActivityAccount raffleActivityAccount = new RaffleActivityAccount();
-        raffleActivityAccount.setUserId(activityOrderEntity.getUserId());
-        raffleActivityAccount.setActivityId(activityOrderEntity.getActivityId());
-        raffleActivityAccount.setTotalCount(activityOrderEntity.getTotalCount());
-        raffleActivityAccount.setTotalCountSurplus(activityOrderEntity.getTotalCount());
-        raffleActivityAccount.setDayCount(activityOrderEntity.getDayCount());
-        raffleActivityAccount.setDayCountSurplus(activityOrderEntity.getDayCount());
-        raffleActivityAccount.setMonthCount(activityOrderEntity.getMonthCount());
-        raffleActivityAccount.setMonthCountSurplus(activityOrderEntity.getMonthCount());
+        raffleActivityAccount.setUserId(createQuotaOrderAggregate.getUserId());
+        raffleActivityAccount.setActivityId(createQuotaOrderAggregate.getActivityId());
+        raffleActivityAccount.setTotalCount(createQuotaOrderAggregate.getTotalCount());
+        raffleActivityAccount.setTotalCountSurplus(createQuotaOrderAggregate.getTotalCount());
+        raffleActivityAccount.setDayCount(createQuotaOrderAggregate.getDayCount());
+        raffleActivityAccount.setDayCountSurplus(createQuotaOrderAggregate.getDayCount());
+        raffleActivityAccount.setMonthCount(createQuotaOrderAggregate.getMonthCount());
+        raffleActivityAccount.setMonthCountSurplus(createQuotaOrderAggregate.getMonthCount());
+
 
         // 账户对象 - 月
         RaffleActivityAccountMonth raffleActivityAccountMonth = new RaffleActivityAccountMonth();
