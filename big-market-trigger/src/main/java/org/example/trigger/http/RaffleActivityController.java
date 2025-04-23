@@ -1,13 +1,19 @@
 package org.example.trigger.http;
 
+import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.example.domain.activity.model.entity.UserRaffleOrderEntity;
+import org.example.domain.activity.service.IRaffleActivityAccountQuotaService;
 import org.example.domain.activity.service.IRaffleActivityPartakeService;
 import org.example.domain.activity.service.armory.IActivityArmory;
 import org.example.domain.award.model.entity.UserAwardRecordEntity;
 import org.example.domain.award.model.valobj.AwardStateVO;
 import org.example.domain.award.service.IAwardService;
+import org.example.domain.rebate.model.entity.BehaviorEntity;
+import org.example.domain.rebate.model.entity.BehaviorRebateOrderEntity;
+import org.example.domain.rebate.model.valobj.BehaviorTypeVO;
+import org.example.domain.rebate.service.IBehaviorRebateService;
 import org.example.domain.strategy.model.entity.RaffleAwardEntity;
 import org.example.domain.strategy.model.entity.RaffleFactorEntity;
 import org.example.domain.strategy.service.IRaffleAward;
@@ -16,6 +22,8 @@ import org.example.domain.strategy.service.armory.IStrategyArmory;
 import org.example.trigger.api.IRaffleActivityService;
 import org.example.trigger.api.dto.ActivityDrawRequestDTO;
 import org.example.trigger.api.dto.ActivityDrawResponseDTO;
+import org.example.trigger.api.dto.UserActivityAccountRequestDTO;
+import org.example.trigger.api.dto.UserActivityAccountResponseDTO;
 import org.example.types.enums.ResponseCode;
 import org.example.types.exception.AppException;
 import org.example.types.model.Response;
@@ -23,7 +31,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: 机智的赛尔
@@ -37,7 +47,8 @@ import java.util.Date;
 @RequestMapping("/api/${app.config.api-version}/raffle/activity")
 public class RaffleActivityController implements IRaffleActivityService {
 
-
+    private final SimpleDateFormat dateFormatDay = new SimpleDateFormat("yyyyMMdd");
+    
     @Resource
     private IRaffleActivityPartakeService raffleActivityPartakeService;
     @Resource
@@ -48,8 +59,10 @@ public class RaffleActivityController implements IRaffleActivityService {
     private IActivityArmory activityArmory;
     @Resource
     private IStrategyArmory strategyArmory;
-
-
+    @Resource
+    private IBehaviorRebateService behaviorRebateService;
+    @Resource
+    private IRaffleActivityAccountQuotaService raffleActivityAccountQuotaService;
 
     /**
      * @description: 活动装配 - 数据预热 | 把活动配置的对应的sku 一起装配
@@ -166,4 +179,93 @@ public class RaffleActivityController implements IRaffleActivityService {
         }
 
     }
+    
+    
+    /**
+     * @description: 日历签到返利接口
+     *
+     * <p>
+     * 接口：<a href="http://localhost:8091/api/v1/raffle/activity/calendar_sign_rebate">/api/v1/raffle/activity/calendar_sign_rebate</a>
+     * 入参：xiaofuge
+     * <p>
+     * curl -X POST http://localhost:8091/api/v1/raffle/activity/calendar_sign_rebate -d "userId=xiaofuge" -H "Content-Type: application/x-www-form-urlencoded"
+     * @author: 超级机智的赛尔
+     * @date: 2025/4/23 14:51
+     * @param: userId 用户ID
+     * @Return: 签到返利结果
+     **/
+    @RequestMapping(value = "calendar_sign_rebate", method = RequestMethod.POST)
+    @Override
+    public Response<Boolean> calendarSignRebate(@RequestParam String userId) {
+        try {
+            log.info("日历签到返利开始 userId:{}", userId);
+            BehaviorEntity behaviorEntity = new BehaviorEntity();
+            behaviorEntity.setUserId(userId);
+            behaviorEntity.setBehaviorTypeVO(BehaviorTypeVO.SIGN);
+            behaviorEntity.setOutBusinessNo(dateFormatDay.format(new Date()));
+            List<String> orderIds = behaviorRebateService.createOrder(behaviorEntity);
+            log.info("日历签到返利完成 userId:{} orderIds: {}", userId, JSON.toJSONString(orderIds));
+            return Response.<Boolean>builder()
+                    .code(ResponseCode.SUCCESS.getCode())
+                    .info(ResponseCode.SUCCESS.getInfo())
+                    .data(true)
+                    .build();
+        } catch (AppException e) {
+            log.error("日历签到返利异常 userId:{} ", userId, e);
+            return Response.<Boolean>builder()
+                    .code(e.getCode())
+                    .info(e.getInfo())
+                    .build();
+        } catch (Exception e) {
+            log.error("日历签到返利失败 userId:{}", userId);
+            return Response.<Boolean>builder()
+                    .code(ResponseCode.UN_ERROR.getCode())
+                    .info(ResponseCode.UN_ERROR.getInfo())
+                    .data(false)
+                    .build();
+        }
+    }
+
+
+
+
+    @RequestMapping(value = "is_calender_sign_rebate", method = RequestMethod.POST)
+    @Override
+    public Response<Boolean> isCalendarSignRebate(@RequestParam String userId) {
+        try{
+            log.info("查询用户是否完成日历签到返利开始 userId:{}", userId);
+            String outBusinessNo = dateFormatDay.format(new Date());
+            List<BehaviorRebateOrderEntity> behaviorRebateOrderEntities = behaviorRebateService.queryOrderByOutBusinessNo(userId, outBusinessNo);
+            log.info("查询用户是否完成日历签到返利完成 userId:{} orders.size():{}", userId , behaviorRebateOrderEntities.size());
+            return Response.<Boolean>builder()
+                    .code(ResponseCode.SUCCESS.getCode())
+                    .info(ResponseCode.SUCCESS.getInfo())
+                    .data(!behaviorRebateOrderEntities.isEmpty())
+                    .build();
+
+
+        } catch (Exception e) {
+            log.error("查询用户是否完成日历签到返利失败 userId:{}", userId, e);
+            return Response.<Boolean>builder()
+                    .code(ResponseCode.UN_ERROR.getCode())
+                    .info(ResponseCode.UN_ERROR.getInfo())
+                    .data(false)
+                    .build();
+        }
+
+    }
+
+    @RequestMapping(value = "query_user_activity_account" , method = RequestMethod.POST)
+    @Override
+    public Response<UserActivityAccountResponseDTO> queryUserActivityAccount(UserActivityAccountRequestDTO request) {
+        try{
+            log.info("查询用户活动账户开始 userId:{} activityId:{}", request.getUserId(), request.getActivityId());
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return null;
+    }
+
 }

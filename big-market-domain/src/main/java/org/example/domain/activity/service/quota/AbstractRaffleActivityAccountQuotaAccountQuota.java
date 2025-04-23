@@ -39,6 +39,9 @@ public abstract class AbstractRaffleActivityAccountQuotaAccountQuota extends Raf
         // 2. 查询 “活动sku” 相关的基础信息
         ActivitySkuEntity activitySkuEntity = queryActivitySku(sku);
         ActivityEntity activityEntity = queryRaffleActivityByActivityId(activitySkuEntity.getActivityId());
+
+
+        // 查询 sku -> 增加的抽奖次数
         ActivityCountEntity activityCountEntity = queryRaffleActivityCountByActivityCountId(activitySkuEntity.getActivityCountId());
 
         // 3. “活动动作” 规则校验

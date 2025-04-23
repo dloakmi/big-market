@@ -1,6 +1,7 @@
 package org.example.domain.rebate.service;
 
 import org.example.domain.rebate.model.entity.BehaviorEntity;
+import org.example.domain.rebate.model.entity.BehaviorRebateOrderEntity;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 public interface IBehaviorRebateService {
 
     /**
-     * @description: 根据 用户行为 -> 多种返利配置 -> 产生多种订单（1.返利订单 2.任务订单（发送MQ））
+     * @description: 根据 用户行为 -> 多种返利配置 -> 产生（多种 × 俩类）订单（1.返利订单 2.任务订单（发送MQ））
      * @author: 超级机智的赛尔
      * @date: 2025/4/23 10:50
      * @param: behaviorEntity
@@ -21,4 +22,6 @@ public interface IBehaviorRebateService {
      **/
     List<String> createOrder(BehaviorEntity behaviorEntity);
 
+
+    List<BehaviorRebateOrderEntity> queryOrderByOutBusinessNo(String UserId ,String outBusinessNo);
 }

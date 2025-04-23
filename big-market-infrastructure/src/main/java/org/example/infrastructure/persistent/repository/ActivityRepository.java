@@ -151,9 +151,9 @@ public class ActivityRepository implements IActivityRepository {
         raffleActivityOrder.setState(activityOrderEntity.getState().getCode());
         raffleActivityOrder.setOutBusinessNo(activityOrderEntity.getOutBusinessNo());
 
+        // 下面的账户对象不一定会使用，因为不一定需要创建，可能本身就已经有了
 
-
-        // 总账户对象
+        // 总账户更新对象
         RaffleActivityAccount raffleActivityAccount = new RaffleActivityAccount();
         raffleActivityAccount.setUserId(createQuotaOrderAggregate.getUserId());
         raffleActivityAccount.setActivityId(createQuotaOrderAggregate.getActivityId());
@@ -164,8 +164,7 @@ public class ActivityRepository implements IActivityRepository {
         raffleActivityAccount.setMonthCount(createQuotaOrderAggregate.getMonthCount());
         raffleActivityAccount.setMonthCountSurplus(createQuotaOrderAggregate.getMonthCount());
 
-
-        // 账户对象 - 月
+        // 账户更新对象 - 月
         RaffleActivityAccountMonth raffleActivityAccountMonth = new RaffleActivityAccountMonth();
         raffleActivityAccountMonth.setUserId(createQuotaOrderAggregate.getUserId());
         raffleActivityAccountMonth.setActivityId(createQuotaOrderAggregate.getActivityId());
@@ -173,7 +172,7 @@ public class ActivityRepository implements IActivityRepository {
         raffleActivityAccountMonth.setMonthCount(createQuotaOrderAggregate.getMonthCount());
         raffleActivityAccountMonth.setMonthCountSurplus(createQuotaOrderAggregate.getMonthCount());
 
-        // 账户对象 - 日
+        // 账户更新对象 - 日
         RaffleActivityAccountDay raffleActivityAccountDay = new RaffleActivityAccountDay();
         raffleActivityAccountDay.setUserId(createQuotaOrderAggregate.getUserId());
         raffleActivityAccountDay.setActivityId(createQuotaOrderAggregate.getActivityId());
@@ -188,22 +187,19 @@ public class ActivityRepository implements IActivityRepository {
                 try {
                     //1.写入订单
                     raffleActivityOrderDao.insert(raffleActivityOrder);
-                    //2.更新账户
+                    //2.更新个人总账户
                     int count = raffleActivityAccountDao.updateAccountQuota(raffleActivityAccount);
-                    // 如果账户不存在则创建账户
+                    // 如果账户不存在则创建个人总账户
                     if(count == 0) {
                         raffleActivityAccountDao.insert(raffleActivityAccount);
                     }
+                    // 如果没有日月账户也没关系，因为日月的总额度已经在总账户更新过了 (而且能增加日月次数的sku感觉不太合理的样子)
                     // 4. 更新账户 - 月
                     int MonthCount =  raffleActivityAccountMonthDao.updateAccountQuota(raffleActivityAccountMonth);
-                    if(MonthCount == 0) {
-                        raffleActivityAccountMonthDao.insertActivityAccountMonth(raffleActivityAccountMonth);
-                    }
+
                     // 5. 更新账户 - 日
                     int DayCount = raffleActivityAccountDayDao.updateAccountQuota(raffleActivityAccountDay);
-                    if(DayCount == 0) {
-                        raffleActivityAccountDayDao.insertActivityAccountDay(raffleActivityAccountDay);
-                    }
+
                     return 1;
 
                 } catch (DuplicateKeyException e) {
@@ -498,6 +494,60 @@ public class ActivityRepository implements IActivityRepository {
         Integer dayPartakeCount = raffleActivityAccountDayDao.queryRaffleActivityAccountDayPartakeCount(raffleActivityAccountDay);
         if(dayPartakeCount==null) return 0;
         return dayPartakeCount;
+    }
+
+    @Override
+    public ActivityAccountEntity queryActivityAccountEntity(String userId, Long activityId) {
+        RaffleActivityAccount raffleActivityAccount = raffleActivityAccountDao.queryActivityAccountByUserId(RaffleActivityAccount.builder()
+                .userId(userId)
+                .activityId(activityId)
+                .build());
+        if(null==raffleActivityAccount) return ActivityAccountEntity.builder()
+                .activityId(activityId)
+                .userId(userId)
+                .totalCount(0)
+                .monthCountSurplus(0)
+                .monthCount(0)
+                .monthCountSurplus(0)
+                .dayCount(0)
+                .dayCountSurplus(0)
+                .build();
+
+        RaffleActivityAccountMonth raffleActivityAccountMonth = raffleActivityAccountMonthDao.queryActivityAccountMonthByUserId(RaffleActivityAccountMonth.builder()
+                .activityId(activityId)
+                .userId(userId)
+                .build());
+
+        RaffleActivityAccountDay raffleActivityAccountDay = raffleActivityAccountDayDao.queryActivityAccountDayByUserId(RaffleActivityAccountDay.builder()
+                .activityId(activityId)
+                .userId(userId)
+                .build());
+
+        // 组装对象
+        ActivityAccountEntity activityAccountEntity = new ActivityAccountEntity();
+        activityAccountEntity.setActivityId(activityId);
+        activityAccountEntity.setUserId(userId);
+        activityAccountEntity.setTotalCount(raffleActivityAccount.getTotalCount());
+        activityAccountEntity.setTotalCountSurplus(raffleActivityAccount.getTotalCountSurplus());
+
+        if(null == raffleActivityAccountDay){
+            activityAccountEntity.setDayCount(raffleActivityAccount.getDayCount());
+            activityAccountEntity.setDayCountSurplus(raffleActivityAccount.getDayCountSurplus());
+        }else{
+            activityAccountEntity.setDayCount(raffleActivityAccountDay.getDayCount());
+            activityAccountEntity.setDayCountSurplus(raffleActivityAccountDay.getDayCountSurplus());
+        }
+
+        if(null == raffleActivityAccountMonth){
+            activityAccountEntity.setMonthCount(raffleActivityAccount.getMonthCount());
+            activityAccountEntity.setMonthCountSurplus(raffleActivityAccount.getMonthCountSurplus());
+        }else{
+            activityAccountEntity.setMonthCount(raffleActivityAccountMonth.getMonthCount());
+            activityAccountEntity.setMonthCountSurplus(raffleActivityAccountMonth.getMonthCountSurplus());
+        }
+
+
+        return activityAccountEntity;
     }
 
 

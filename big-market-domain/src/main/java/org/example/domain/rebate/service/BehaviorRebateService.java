@@ -36,7 +36,7 @@ public class BehaviorRebateService implements IBehaviorRebateService {
     @Override
     public List<String> createOrder(BehaviorEntity behaviorEntity) {
         // 查询返利配置
-        List<DailyBehaviorRebateVO> dailyBehaviorRebateVOS = behaviorRebateRepository.queryDailyBehaviorRebateConfig(behaviorEntity.getBehaviorType());
+        List<DailyBehaviorRebateVO> dailyBehaviorRebateVOS = behaviorRebateRepository.queryDailyBehaviorRebateConfig(behaviorEntity.getBehaviorTypeVO());
         if (dailyBehaviorRebateVOS == null || dailyBehaviorRebateVOS.isEmpty()) return new ArrayList<String>();
 
         // 构建聚合对象
@@ -53,6 +53,7 @@ public class BehaviorRebateService implements IBehaviorRebateService {
                     .orderId(RandomStringUtils.randomNumeric(12))
                     .behaviorType(dailyBehaviorRebateVO.getBehaviorType())
                     .rebateDesc(dailyBehaviorRebateVO.getRebateDesc())
+                    .outBusinessNo(behaviorEntity.getOutBusinessNo())
                     .rebateConfig(dailyBehaviorRebateVO.getRebateConfig())
                     .rebateType(dailyBehaviorRebateVO.getRebateType())
                     .bizId(bizId)
@@ -94,5 +95,10 @@ public class BehaviorRebateService implements IBehaviorRebateService {
 
         // 返回订单ID集合
         return orderIds;
+    }
+
+    @Override
+    public List<BehaviorRebateOrderEntity> queryOrderByOutBusinessNo(String UserId, String outBusinessNo) {
+        return behaviorRebateRepository.queryOrderByOutBusinessNo( UserId,  outBusinessNo);
     }
 }

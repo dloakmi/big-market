@@ -1,5 +1,6 @@
 package org.example.domain.activity.service;
 
+import org.example.domain.activity.model.entity.ActivityAccountEntity;
 import org.example.domain.activity.model.entity.PartakeRaffleActivityEntity;
 import org.example.domain.activity.model.entity.UserRaffleOrderEntity;
 
@@ -29,4 +30,6 @@ public interface IRaffleActivityPartakeService {
      * @Return: 用户抽奖订单实体对象
      **/
     UserRaffleOrderEntity createOrder(PartakeRaffleActivityEntity partakeRaffleActivityEntity);
+
+
 }
