@@ -38,7 +38,16 @@ public interface IRaffleActivityAccountQuotaService {
      **/
     Integer queryRaffleActivityAccountDayPartakeCount(Long activityId, String userId);
 
+    /**
+     * @description: 查询 用户的活动账户
+     * @author: 超级机智的赛尔
+     * @date: 2025/4/24 16:13
+     * @param userId 用户ID
+     * @param activityId 活动ID
+     * @Return: 活动账户实体
+     **/
     ActivityAccountEntity queryActivityAccountEntity(String userId, Long activityId);
 
 
+    Integer queryRaffleActivityAccountPartakeCount(String userId, Long activityId);
 }

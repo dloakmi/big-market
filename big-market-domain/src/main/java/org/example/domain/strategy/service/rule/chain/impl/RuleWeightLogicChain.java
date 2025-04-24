@@ -27,8 +27,6 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
     @Resource
     private IStrategyDispatch strategyDispatch;
 
-    //等待被mock
-    public Long userScore =  0L;
 
     @Override
     public DefaultChainFactory.StrategyAwardVO logic(String userId, Long strategyId) {
@@ -43,6 +41,8 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
         List<Long> analyticalSortedKeys = new ArrayList<>(analyticalValueGroup.keySet());
         Collections.sort(analyticalSortedKeys);
 
+        Integer userScore = repository.queryActivityAccountTotalUseCount(userId,strategyId);
+
         // 3.找到对应的积分限制位置
         Long nextValue = analyticalSortedKeys.stream()
                 .sorted(Comparator.reverseOrder())
@@ -50,7 +50,7 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
                 .findFirst()
                 .orElse(null);
 
-        // 4.抽奖！（还没发奖）
+        // 4.抽奖！！！！
         if(null != nextValue){
             Integer awardId = strategyDispatch.getRandomAwardId(strategyId, analyticalValueGroup.get(nextValue));
             log.info("抽奖责任链—权重处理 userId:{} strategyId:{} ruleModel:{} ", userId, strategyId, ruleModel());

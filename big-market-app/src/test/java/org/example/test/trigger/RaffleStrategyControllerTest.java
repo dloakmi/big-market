@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.trigger.api.IRaffleStrategyService;
 import org.example.trigger.api.dto.RaffleAwardListRequestDTO;
 import org.example.trigger.api.dto.RaffleAwardListResponseDTO;
+import org.example.trigger.api.dto.RaffleStrategyRuleWeightRequestDTO;
+import org.example.trigger.api.dto.RaffleStrategyRuleWeightResponseDTO;
 import org.example.types.model.Response;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,6 +39,17 @@ public class RaffleStrategyControllerTest {
         request.setActivityId(100301L);
         Response<List<RaffleAwardListResponseDTO>> response = raffleStrategyService.queryRaffleAwardList(request);
 
+        log.info("请求参数：{}", JSON.toJSONString(request));
+        log.info("测试结果：{}", JSON.toJSONString(response));
+    }
+
+    @Test
+    public void test_queryRaffleStrategyRuleWeight() {
+        RaffleStrategyRuleWeightRequestDTO request = new RaffleStrategyRuleWeightRequestDTO();
+        request.setUserId("xiaofuge");
+        request.setActivityId(100301L);
+
+        Response<List<RaffleStrategyRuleWeightResponseDTO>> response = raffleStrategyService.queryRaffleStrategyRuleWeight(request);
         log.info("请求参数：{}", JSON.toJSONString(request));
         log.info("测试结果：{}", JSON.toJSONString(response));
     }
