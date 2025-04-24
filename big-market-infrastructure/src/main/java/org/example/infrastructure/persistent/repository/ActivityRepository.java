@@ -502,6 +502,7 @@ public class ActivityRepository implements IActivityRepository {
                 .userId(userId)
                 .activityId(activityId)
                 .build());
+        // 如果该用户根本就没有总账户
         if(null==raffleActivityAccount) return ActivityAccountEntity.builder()
                 .activityId(activityId)
                 .userId(userId)
@@ -530,6 +531,7 @@ public class ActivityRepository implements IActivityRepository {
         activityAccountEntity.setTotalCount(raffleActivityAccount.getTotalCount());
         activityAccountEntity.setTotalCountSurplus(raffleActivityAccount.getTotalCountSurplus());
 
+        // 分情况考虑，是否有月账户和日账户
         if(null == raffleActivityAccountDay){
             activityAccountEntity.setDayCount(raffleActivityAccount.getDayCount());
             activityAccountEntity.setDayCountSurplus(raffleActivityAccount.getDayCountSurplus());
@@ -548,6 +550,15 @@ public class ActivityRepository implements IActivityRepository {
 
 
         return activityAccountEntity;
+    }
+
+    @Override
+    public Integer queryRaffleActivityAccountPartakeCount(String userId, Long activityId) {
+        RaffleActivityAccount raffleActivityAccount = raffleActivityAccountDao.queryActivityAccountByUserId(RaffleActivityAccount.builder()
+                .activityId(activityId)
+                .userId(userId)
+                .build());
+        return raffleActivityAccount.getTotalCount() - raffleActivityAccount.getTotalCountSurplus();
     }
 
 

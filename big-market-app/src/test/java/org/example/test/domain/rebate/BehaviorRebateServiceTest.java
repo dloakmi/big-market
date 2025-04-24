@@ -2,9 +2,11 @@ package org.example.test.domain.rebate;
 
 import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
+import org.example.domain.activity.service.armory.IActivityArmory;
 import org.example.domain.rebate.model.entity.BehaviorEntity;
 import org.example.domain.rebate.model.valobj.BehaviorTypeVO;
 import org.example.domain.rebate.service.IBehaviorRebateService;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,11 +29,20 @@ public class BehaviorRebateServiceTest {
     @Resource
     private IBehaviorRebateService behaviorRebateService;
 
+    @Resource
+    private IActivityArmory activityArmory;
+
+    @Before
+    public void init() {
+        activityArmory.assembleActivitySkuByActivityId(100301L);
+    }
+
+
     @Test
     public void test_createOrder() throws InterruptedException {
         BehaviorEntity behaviorEntity = new BehaviorEntity();
         behaviorEntity.setUserId("xiaofuge");
-        behaviorEntity.setBehaviorType(BehaviorTypeVO.SIGN);
+        behaviorEntity.setBehaviorTypeVO(BehaviorTypeVO.SIGN);
         // 重复的 OutBusinessNo 会报错唯一索引冲突，这也是保证幂等的手段，确保不会多记账
         behaviorEntity.setOutBusinessNo("20250118");
 

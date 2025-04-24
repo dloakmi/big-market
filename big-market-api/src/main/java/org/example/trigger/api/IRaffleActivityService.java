@@ -50,6 +50,13 @@ public interface IRaffleActivityService {
      **/
     Response<Boolean> isCalendarSignRebate(String userId);
 
+    /**
+     * @description: 查询用户活动账户（主要是抽奖次数）
+     * @author: 超级机智的赛尔
+     * @date: 2025/4/24 16:08
+     * @param request 请求对象
+     * @Return: 用户账号信息
+     **/
     Response<UserActivityAccountResponseDTO> queryUserActivityAccount(UserActivityAccountRequestDTO request);
 
 
