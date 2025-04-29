@@ -1,5 +1,6 @@
 package org.example.domain.award.service;
 
+import org.example.domain.award.model.entity.DistributeAwardEntity;
 import org.example.domain.award.model.entity.UserAwardRecordEntity;
 
 /**
@@ -18,5 +19,14 @@ public interface IAwardService {
      * @Return: void
      **/
     void saveUserAwardRecord(UserAwardRecordEntity userAwardRecordEntity);
+
+    /**
+     * @description: 配送发货奖品
+     * @author: 超级机智的赛尔
+     * @date: 2025/4/29 10:52
+     * @param distributeAwardEntity 配送奖品实体
+     * @Return: void
+     **/
+    void distributeAward(DistributeAwardEntity distributeAwardEntity);
 
 }
