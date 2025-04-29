@@ -24,15 +24,15 @@ import java.util.Date;
 @Slf4j
 public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
 
-    // 策略仓储服务 -> domain层像一个大厨，仓储层提供米面粮油
+
     protected IStrategyRepository repository;
-    // 策略调度服务 -> 只负责抽奖处理，通过新增接口的方式，隔离职责，不需要使用方关心或者调用抽奖的初始化
+
     protected IStrategyDispatch strategyDispatch;
 
-    // 抽奖的责任链 -> 从抽奖的规则中，解耦出前置规则为责任链处理
+    // 抽奖前 - 责任链
     protected final DefaultChainFactory defaultChainFactory;
 
-    // 抽奖的决策树 -> 负责抽奖中到抽奖后的规则过滤，如抽奖到A奖品ID，之后要做次数的判断和库存的扣减等
+    // 抽奖后 - 决策树
     protected final DefaultTreeFactory defaultTreeFactory;
 
     public AbstractRaffleStrategy(IStrategyRepository repository, IStrategyDispatch strategyDispatch, DefaultChainFactory defaultChainFactory, DefaultTreeFactory defaultTreeFactory) {
@@ -58,7 +58,7 @@ public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
 
         // 如果是黑名单的话，不能走完全部的责任链
         if(!chainStrategyAwardVO.getLogicModel().equals(DefaultChainFactory.LogicModel.RULE_DEFAULT.getCode())) {
-            return bulidRaffleAwardEntity(strategyId,chainStrategyAwardVO.getAwardId(), null);
+            return bulidRaffleAwardEntity(strategyId,chainStrategyAwardVO.getAwardId(), chainStrategyAwardVO.getAwardRuleValue());
         }
 
         // 3.规则树抽奖过滤【奖品ID，会根据抽奖次数判断、库存判断、兜底兜里返回最终的可获得奖品信息】

@@ -150,8 +150,10 @@ public class RaffleActivityController implements IRaffleActivityService {
                     .awardTitle(raffleAwardEntity.getAwardTitle())
                     .awardTime(new Date())
                     .awardState(AwardStateVO.create)
+                    .awardConfig(raffleAwardEntity.getAwardConfig())
                     .build();
 
+            // 在存放的时候 -> 其他的一些流程
             awardService.saveUserAwardRecord(userAwardRecordEntity);
 
             // 5.返回结果

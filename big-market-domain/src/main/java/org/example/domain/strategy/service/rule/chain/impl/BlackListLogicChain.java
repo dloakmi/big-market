@@ -37,6 +37,7 @@ public class BlackListLogicChain extends AbstractLogicChain {
                 return DefaultChainFactory.StrategyAwardVO.builder()
                         .awardId(awardId)
                         .logicModel(ruleModel())
+                        .awardRuleValue("0.01,1")
                         .build();
             }
         }
@@ -47,6 +48,6 @@ public class BlackListLogicChain extends AbstractLogicChain {
 
     @Override
     protected String ruleModel() {
-        return DefaultChainFactory.LogicModel.RULE_DEFAULT.getCode();
+        return DefaultChainFactory.LogicModel.RULE_BLACKLIST.getCode();
     }
 }
