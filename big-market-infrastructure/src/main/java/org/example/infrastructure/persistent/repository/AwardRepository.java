@@ -172,7 +172,7 @@ public class AwardRepository implements IAwardRepository {
                     // 更新奖品记录
                     int updateAwardCount = userAwardRecordDao.updateAwardRecordCompletedState(userAwardRecordReq);
                     if (0 == updateAwardCount) {
-                        log.warn("更新中奖记录，重复更新拦截 userId:{} giveOutPrizesAggregate:{}", userId, JSON.toJSONString(giveOutPrizesAggregate));
+                        log.warn("更新中奖记录，重复更新拦截 userId:{} giveOutPrizesAggregate:{} userAwardRecordReq:{}", userId, JSON.toJSONString(giveOutPrizesAggregate),JSON.toJSONString(userAwardRecordReq));
                         status.setRollbackOnly();
                     }
                     log.info("更新积分账户和奖品记录成功 userId:{} giveOutPrizesAggregate:{}", userId, JSON.toJSONString(giveOutPrizesAggregate));
