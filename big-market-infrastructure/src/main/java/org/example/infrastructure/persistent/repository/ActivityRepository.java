@@ -19,6 +19,7 @@ import org.example.types.enums.ResponseCode;
 import org.example.types.exception.AppException;
 import org.redisson.api.RBlockingQueue;
 import org.redisson.api.RDelayedQueue;
+import org.redisson.api.RLock;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -180,7 +181,13 @@ public class ActivityRepository implements IActivityRepository {
         raffleActivityAccountDay.setDayCount(createQuotaOrderAggregate.getDayCount());
         raffleActivityAccountDay.setDayCountSurplus(createQuotaOrderAggregate.getDayCount());
 
+        // 引入分布式锁来解决间隙锁问题（就是多次update之间的锁，防止更新错误）
+        RLock lock = redisService.getLock(Constants.RedisKey.ACTIVITY_ACCOUNT_LOCK + createQuotaOrderAggregate.getUserId() + Constants.UNDERLINE + createQuotaOrderAggregate.getActivityId());
+
         try {
+
+            lock.lock(3, TimeUnit.SECONDS);
+
             // 在dbRouter中存储此次要选用的库和表
             dbRouter.doRouter(createQuotaOrderAggregate.getUserId());
             transactionTemplate.execute(status -> {
@@ -211,6 +218,7 @@ public class ActivityRepository implements IActivityRepository {
 
         } finally {
             dbRouter.clear();
+            lock.unlock();
         }
 
     }
