@@ -48,7 +48,7 @@ public class AwardService implements IAwardService {
         sendAwardMessage.setAwardId(userAwardRecordEntity.getAwardId());
         sendAwardMessage.setUserId(userAwardRecordEntity.getUserId());
         sendAwardMessage.setAwardTitle(userAwardRecordEntity.getAwardTitle());
-        sendAwardMessage.setAwardTitle(userAwardRecordEntity.getAwardTitle());
+        sendAwardMessage.setOrderId(userAwardRecordEntity.getOrderId());
         sendAwardMessage.setAwardConfig(userAwardRecordEntity.getAwardConfig());
 
         BaseEvent.EventMessage<SendAwardMessageEvent.SendAwardMessage> sendAwardMessageEventMessage = sendAwardMessageEvent.buildEventMessage(sendAwardMessage);
