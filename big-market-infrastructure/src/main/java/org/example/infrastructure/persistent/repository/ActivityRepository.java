@@ -211,7 +211,7 @@ public class ActivityRepository implements IActivityRepository {
 
                 } catch (DuplicateKeyException e) {
                     status.setRollbackOnly();
-                    log.error("写入订单记录，唯一索引记录 userId:{}  activityId:{} , sku:{}", activityOrderEntity.getUserId(), activityOrderEntity.getActivityId(), activityOrderEntity.getSku());
+                    log.error("写入订单记录，唯一索引记录 userId:{}  activityId:{} , sku:{} , outBusinessNo:{}", activityOrderEntity.getUserId(), activityOrderEntity.getActivityId(), activityOrderEntity.getSku(),activityOrderEntity.getOutBusinessNo());
                     throw new AppException(ResponseCode.INDEX_DUP.getCode());
                 }
             });
